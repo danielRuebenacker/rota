@@ -20,6 +20,7 @@ func add_item(item_scene: PackedScene) -> void:
 	item_list.append(item_scene)
 	item_index = item_list.size() - 1
 	vertices = item_list.size()
+	rotation = -TAU * item_index / item_list.size()
 	generate_circle()
 	draw_items()
 	visible = true
@@ -65,10 +66,8 @@ func _draw() -> void:
 	if item_list.is_empty():
 		return
 
-	var selected_position := Vector2.ZERO
-	if item_list.size() > 1:
-		var angle := TAU * item_index / item_list.size()
-		selected_position = Vector2(cos(angle), sin(angle)) * radius * item_inset
+	var fixed_selection_position := Vector2(radius * item_inset, 0.0)
+	var selected_position := fixed_selection_position.rotated(-rotation)
 
 	draw_arc(selected_position, 18.0, 0.0, TAU, 24, Color("#ffe066"), 3.0)
 	draw_line(selected_position + Vector2(-24, 0), selected_position + Vector2(-18, 0), Color("#ffe066"), 3.0)
@@ -90,7 +89,7 @@ func pulse_rotation() -> void:
 	tween.tween_property(
 		self,
 		"rotation_degrees",
-		rotation_degrees + 360.0 / item_list.size(),
+		rotation_degrees - 360.0 / item_list.size(),
 		pulse_duration
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	
