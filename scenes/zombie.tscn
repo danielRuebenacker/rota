@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dgoxvaf17opt2"]
 
 [ext_resource type="Texture2D" path="res://sprites/enemy.svg" id="2_4ra3w"]
+[ext_resource type="PackedScene" uid="uid://b6mlpo4p1h78w" path="res://scenes/enemy_health_bar.tscn" id="3_health"]
 
 [sub_resource type="GDScript" id="GDScript_1vlb3"]
 script/source = "extends Enemy
@@ -48,3 +49,5 @@ shape = SubResource("RectangleShape2D_b7736")
 texture = ExtResource("2_4ra3w")
 
 [node name="WeaponHolder" type="Node2D" parent="." unique_id=1348353308]
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("3_health")]
