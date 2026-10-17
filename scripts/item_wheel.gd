@@ -5,7 +5,7 @@ extends Polygon2D
 
 var vertices: int = 0
 var item_index: int = 0
-const DISPLAY_VERTICES := 8
+const DISPLAY_VERTICES := 32
 
 var item_list: Array[PackedScene] = []
 
@@ -20,7 +20,7 @@ func add_item(item_scene: PackedScene) -> void:
 	item_list.append(item_scene)
 	item_index = item_list.size() - 1
 	vertices = item_list.size()
-	rotation = -TAU * item_index / item_list.size()
+	rotation = -PI / 4.0 - TAU * item_index / item_list.size()
 	generate_circle()
 	draw_items()
 	visible = true
@@ -66,7 +66,7 @@ func _draw() -> void:
 	if item_list.is_empty():
 		return
 
-	var fixed_selection_position := Vector2(radius * item_inset, 0.0)
+	var fixed_selection_position := Vector2(radius * item_inset, -radius * item_inset)
 	var selected_position := fixed_selection_position.rotated(-rotation)
 
 	draw_arc(selected_position, 18.0, 0.0, TAU, 24, Color("#ffe066"), 3.0)
