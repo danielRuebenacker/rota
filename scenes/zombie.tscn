@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgoxvaf17opt2"]
 
-[ext_resource type="Texture2D" uid="uid://dix0myh32ajm8" path="res://icon.svg" id="2_4ra3w"]
+[ext_resource type="Texture2D" path="res://sprites/enemy.svg" id="2_4ra3w"]
 
 [sub_resource type="GDScript" id="GDScript_1vlb3"]
 script/source = "extends Enemy
