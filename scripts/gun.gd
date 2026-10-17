@@ -3,7 +3,7 @@ extends Item
 
 const BULLET_SCENE := preload("res://scenes/bullet.tscn")
 @export var fire_cooldown := 0.25
-@export var damage := 10
+@export var damage: int
 
 var _can_fire := true
 

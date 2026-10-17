@@ -5,6 +5,7 @@
 
 [node name="Item_Gun" type="Node2D" unique_id=182698635]
 script = ExtResource("1_jdyoa")
+damage = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=505437515]
 texture = ExtResource("2_l2nem")

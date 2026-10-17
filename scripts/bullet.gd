@@ -1,7 +1,7 @@
 extends Area2D
 
 const SPEED := 600.0
-var damage := 10
+var damage: int
 
 var direction := Vector2.RIGHT
 
