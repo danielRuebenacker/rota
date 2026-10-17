@@ -25,3 +25,4 @@ func update_player_weapon() -> void:
 
 	if item_scene != null:
 		player.equip_weapon(item_scene)
+		

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://coom5xx1uw1t0"]
 
-[ext_resource type="Script" uid="uid://c7tjasr22hftd" path="res://item_wheel.gd" id="1_vuhp2"]
+[ext_resource type="Script" uid="uid://c7tjasr22hftd" path="res://scripts/item_wheel.gd" id="1_vuhp2"]
 
 [node name="ItemWheel" type="Node2D" unique_id=1991812822]
 
@@ -8,6 +8,4 @@
 color = Color(0, 0.9128218, 0.69642687, 1)
 script = ExtResource("1_vuhp2")
 radius = 132.0
-vertices = 8
 pulse_duration = 0.3
-pulse_interval = 1.5
