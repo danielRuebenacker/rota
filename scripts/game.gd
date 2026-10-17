@@ -4,7 +4,7 @@ signal change_item_pulse
 
 @export var pulse_interval: float = 2.0
 
-@onready var wheel = $ItemWheel/Polygon2D
+@onready var wheel = $CanvasLayer/ItemWheel/Polygon2D
 @onready var player = $Player
 @onready var timer: Timer = $ItemTimer
 

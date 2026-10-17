@@ -5,10 +5,12 @@ extends Polygon2D
 
 var vertices: int = 0
 var item_index: int = 0
+const DISPLAY_VERTICES := 8
 
 var item_list: Array[PackedScene] = []
 
 func _ready() -> void:
+	generate_circle()
 	draw_items()
 
 func add_item(item_scene: PackedScene) -> void:
@@ -24,14 +26,10 @@ func has_items() -> bool:
 	return not item_list.is_empty()
 
 func generate_circle() -> void:
-	if vertices < 2:
-		polygon = PackedVector2Array()
-		return
-
 	var points := PackedVector2Array()
 
-	for i in range(vertices):
-		var angle := TAU * i / vertices
+	for i in range(DISPLAY_VERTICES):
+		var angle := TAU * i / DISPLAY_VERTICES
 		points.append(Vector2(cos(angle), sin(angle)) * radius)
 
 	polygon = points
@@ -44,9 +42,6 @@ func draw_items() -> void:
 	for child in get_children():
 		child.queue_free()
 
-	if item_list.size() < 3:
-		polygon = PackedVector2Array()
-
 	for i in range(item_list.size()):
 		var item_scene := item_list[i].instantiate()
 		var original_sprite := item_scene.get_node("Sprite2D") as Sprite2D
@@ -54,7 +49,11 @@ func draw_items() -> void:
 		var sprite := Sprite2D.new()
 		sprite.texture = original_sprite.texture
 		sprite.scale = Vector2.ONE * item_scale
-		sprite.position = Vector2.ZERO if item_list.size() == 1 else polygon[i] * item_inset
+		if item_list.size() == 1:
+			sprite.position = Vector2.ZERO
+		else:
+			var angle := TAU * i / item_list.size()
+			sprite.position = Vector2(cos(angle), sin(angle)) * radius * item_inset
 
 		add_child(sprite)
 		item_scene.free()
