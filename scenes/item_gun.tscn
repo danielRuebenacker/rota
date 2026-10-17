@@ -8,3 +8,6 @@ script = ExtResource("1_jdyoa")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=505437515]
 texture = ExtResource("2_l2nem")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(60, 0)
