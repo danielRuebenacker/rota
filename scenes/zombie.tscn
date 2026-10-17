@@ -45,4 +45,4 @@ shape = SubResource("RectangleShape2D_b7736")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1328765886]
 texture = ExtResource("2_4ra3w")
 
-[node name="WeaponHolder" type="Node2D" parent="."]
+[node name="WeaponHolder" type="Node2D" parent="." unique_id=1348353308]
