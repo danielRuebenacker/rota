@@ -64,3 +64,37 @@ position = Vector2(670, -74)
 position = Vector2(312, 112)
 
 [node name="ItemTimer" type="Timer" parent="." unique_id=1047130262]
+
+[node name="DeathScreen" type="CanvasLayer" parent="." unique_id=1379383586]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="DeathScreen" unique_id=1694976107]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.16078432, 0.15686275, 0.78431374)
+
+[node name="Label" type="Label" parent="DeathScreen" unique_id=1145549300]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -84.5
+offset_right = 145.0
+offset_bottom = 84.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.61960787)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 60
+text = "ya gone
+dead man"
+horizontal_alignment = 1
