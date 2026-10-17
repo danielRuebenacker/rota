@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c38dmrhc53ski"]
+
+[ext_resource type="Script" uid="uid://bgoxydw34s3xi" path="res://gun.gd" id="1_jdyoa"]
+[ext_resource type="Texture2D" uid="uid://dix0myh32ajm8" path="res://icon.svg" id="2_l2nem"]
+
+[node name="Item_Gun" type="Node2D" unique_id=182698635]
+script = ExtResource("1_jdyoa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=505437515]
+texture = ExtResource("2_l2nem")
