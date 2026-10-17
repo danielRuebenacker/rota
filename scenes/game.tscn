@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://coom5xx1uw1t0" path="res://scenes/item_wheel.tscn" id="4_wheel"]
 [ext_resource type="PackedScene" uid="uid://c8b6w8v7n4m2p" path="res://scenes/shotgun_loot.tscn" id="5_shotgun"]
 [ext_resource type="Script" uid="uid://da6v32n35hant" path="res://scripts/enemy_spawner.gd" id="6_spawner"]
+[ext_resource type="PackedScene" path="res://scenes/healing_potion.tscn" id="12_potion"]
+[ext_resource type="Script" path="res://scripts/potion_spawner.gd" id="13_potion_spawner"]
 [ext_resource type="Texture2D" uid="uid://75e4hstpob3w" path="res://sprites/lava-fused.png" id="9_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://f7ojj7o8h3mi" path="res://sprites/ground.png" id="11_kvpfn"]
 
@@ -112,6 +114,11 @@ position = Vector2(394, -66)
 [node name="EnemySpawner" type="Node" parent="." unique_id=1581725621]
 script = ExtResource("6_spawner")
 enemy_scene = ExtResource("2_u5sy4")
+player_path = NodePath("../Player")
+
+[node name="PotionSpawner" type="Node" parent="."]
+script = ExtResource("13_potion_spawner")
+potion_scene = ExtResource("12_potion")
 player_path = NodePath("../Player")
 
 [node name="DeathScreen" type="CanvasLayer" parent="." unique_id=1379383586]

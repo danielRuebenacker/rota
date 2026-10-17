@@ -7,7 +7,7 @@ const SPEED = 300.0
 const TURN_SPEED = 7.0
 
 @export var max_health = 200
-@onready var current_health: int = max_health 
+@onready var current_health: float = max_health
 
 @onready var weapon_holder: Node2D = $WeaponHolder
 
@@ -33,6 +33,10 @@ func take_damage(amount: int) -> void:
 		return
 	await get_tree().create_timer(0.5).timeout
 	_can_be_hit = true
+
+func heal_percent(percent: float) -> void:
+	current_health = min(current_health + max_health * percent, max_health)
+	health_changed.emit()
 		
 # player killed
 func die() -> void:
@@ -78,6 +82,8 @@ func _physics_process(delta: float) -> void:
 			return
 		elif collider.is_in_group("Loot"):
 			print("Hit loot named: ", collider.name)
+			if collider.has_method("heal_player"):
+				collider.heal_player(self)
 			if collider.has_method("get_pickup_scene"):
 				var weapon_scene: PackedScene = collider.get_pickup_scene()
 				var game := get_tree().current_scene

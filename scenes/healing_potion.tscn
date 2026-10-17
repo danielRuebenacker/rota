@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c6healingpotion"]
+
+[ext_resource type="Script" path="res://scripts/healing_potion.gd" id="1_potion"]
+[ext_resource type="Texture2D" path="res://sprites/healing_potion.svg" id="2_potion"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_potion"]
+radius = 20.0
+
+[node name="HealingPotion" type="StaticBody2D" groups=["Loot", "HealingPotion"]]
+script = ExtResource("1_potion")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_potion")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_potion")
