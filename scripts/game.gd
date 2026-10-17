@@ -23,6 +23,6 @@ func _ready() -> void:
 func update_player_weapon() -> void:
 	var item_scene = wheel.get_current_item()
 
-	if item_scene != null:
+	if item_scene != null and player != null:
 		player.equip_weapon(item_scene)
 		

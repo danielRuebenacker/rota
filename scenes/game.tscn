@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://4nbg57ax7xgj" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://rqpwshaswxw0" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://dthpsxq705y4m" path="res://scenes/health_bar.gd" id="2_gee14"]
 [ext_resource type="PackedScene" uid="uid://dgoxvaf17opt2" path="res://scenes/zombie.tscn" id="2_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://bx76amhouoxtk" path="res://scenes/wall.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://bkeav6vral48j" path="res://scenes/loot.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dqc1cnxl81cst" path="res://scenes/loot.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://coom5xx1uw1t0" path="res://scenes/item_wheel.tscn" id="4_wheel"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wykyb"]
@@ -13,6 +14,20 @@
 
 [node name="Game" type="Node2D" unique_id=950759391]
 script = ExtResource("1_lbhrr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1379717001]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=111596942 node_paths=PackedStringArray("player")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -214.0
+offset_top = 45.0
+offset_right = -39.0
+offset_bottom = 86.0
+grow_horizontal = 0
+script = ExtResource("2_gee14")
+player = NodePath("../../Player")
 
 [node name="Zombie" parent="." unique_id=359590457 instance=ExtResource("2_u5sy4")]
 position = Vector2(-17, 170)
