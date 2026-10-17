@@ -1,7 +1,12 @@
 class_name Player
 extends CharacterBody2D
 
+signal health_changed
+
 const SPEED = 300.0
+
+@export var max_health = 200
+@onready var current_health: int = max_health 
 
 @onready var weapon_holder: Node2D = $WeaponHolder
 
@@ -9,9 +14,28 @@ var current_weapon: Node2D
 
 func _ready() -> void:
 	add_to_group("Player")
+	health_changed.emit()
 
 func get_player_direction() -> Vector2:
 	return Vector2.RIGHT.rotated(rotation)
+	
+	
+var _can_be_hit := true
+func take_damage(amount: int) -> void:
+	if not _can_be_hit:
+		return
+	_can_be_hit = false
+	current_health = max(current_health - amount, 0)
+	health_changed.emit()
+	if current_health <= 0:
+		die()
+		return
+	await get_tree().create_timer(0.5).timeout
+	_can_be_hit = true
+		
+# player killed
+func die() -> void:
+	queue_free()
 
 func equip_weapon(weapon_scene: PackedScene) -> void:
 	if current_weapon != null:
@@ -53,3 +77,5 @@ func _physics_process(delta: float) -> void:
 			# gets rid of loot
 			collider.queue_free()
 			# queue free breaks references to player -- make death different
+		elif collider is Enemy:
+			take_damage(10)
