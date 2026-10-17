@@ -1,9 +1,9 @@
-CollisionShape2D
-StaticBody2D
 Sprite2D
+CollisionShape2D
+AnimatedSprite2D
+CharacterBody2D
+StaticBody2D
 RigidBody2D
 Node
 CanvasLayer
 Camera2D
-AnimatedSprite2D
-CharacterBody2D
