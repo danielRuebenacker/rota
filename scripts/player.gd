@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 signal health_changed
 
-const SPEED = 300.0
+const SPEED = 150.0
 const TURN_SPEED = 7.0
 
 @export var max_health = 200
@@ -55,7 +55,8 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("use") and current_weapon != null:
 		current_weapon.use()
-		
+	rotation = (get_global_mouse_position() - global_position).angle()
+	
 	if Input.is_action_pressed("ui_right"):
 		rotation += TURN_SPEED * delta
 		

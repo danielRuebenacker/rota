@@ -7,6 +7,7 @@ var vertices: int = 0
 var item_index: int = 0
 const DISPLAY_VERTICES := 8
 
+
 var item_list: Array[PackedScene] = []
 
 func _ready() -> void:
@@ -24,6 +25,7 @@ func add_item(item_scene: PackedScene) -> void:
 	draw_items()
 	visible = true
 	queue_redraw()
+	rotation_degrees = -90.0 - (360.0 * item_index / item_list.size())
 
 func has_items() -> bool:
 	return not item_list.is_empty()
@@ -38,7 +40,7 @@ func generate_circle() -> void:
 	polygon = points
 
 
-@export var item_scale: float = 0.2
+@export var item_scale: float = 1
 @export var item_inset: float = 0.75
 
 func draw_items() -> void:
@@ -80,23 +82,28 @@ func pulse_rotation() -> void:
 	if item_list.size() < 2:
 		return
 
-	item_index += 1
-	if item_index >= item_list.size():
-		item_index = 0
+	item_index = (item_index - 1 + item_list.size()) % item_list.size()
 	queue_redraw()
+
+	var target_rotation := rotation_degrees + 360.0 / item_list.size()
 
 	var tween := create_tween()
 
 	tween.tween_property(
 		self,
 		"rotation_degrees",
-		rotation_degrees + 360.0 / item_list.size(),
+		target_rotation,
 		pulse_duration
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	
 	
 func get_current_item() -> PackedScene:
 	if item_list.is_empty():
 		return null
 
 	return item_list[item_index]
+	
+	
+func _process(_delta: float) -> void:
+	for child in get_children():
+		if child is Sprite2D:
+			child.rotation = -rotation
