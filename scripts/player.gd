@@ -37,7 +37,6 @@ func take_damage(amount: int) -> void:
 func die() -> void:
 	var death_screen = get_node("/root/Game/DeathScreen")
 	death_screen.visible = true
-	queue_free()
 
 func equip_weapon(weapon_scene: PackedScene) -> void:
 	if current_weapon != null:
@@ -78,6 +77,11 @@ func _physics_process(delta: float) -> void:
 			return
 		elif collider.is_in_group("Loot"):
 			print("Hit loot named: ", collider.name)
+			if collider.has_method("get_pickup_scene"):
+				var weapon_scene: PackedScene = collider.get_pickup_scene()
+				var game := get_tree().current_scene
+				if weapon_scene != null and game.has_method("collect_weapon"):
+					game.collect_weapon(weapon_scene)
 			# gets rid of loot
 			collider.queue_free()
 			# queue free breaks references to player -- make death different
