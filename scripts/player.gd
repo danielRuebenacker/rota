@@ -66,9 +66,12 @@ func _physics_process(delta: float) -> void:
 		
 		if collider == null or collider.is_queued_for_deletion():
 			continue
+			
+		var death_screen = get_node("/root/Game/DeathScreen")
 		
 		if collider.is_in_group("GameWall"):
 			print("Hit a wall named: ", collider.name)
+			death_screen.visible = true
 			# gets rid of player
 			# queue_free()
 			return
