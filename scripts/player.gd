@@ -35,6 +35,8 @@ func take_damage(amount: int) -> void:
 		
 # player killed
 func die() -> void:
+	var death_screen = get_node("/root/Game/DeathScreen")
+	death_screen.visible = true
 	queue_free()
 
 func equip_weapon(weapon_scene: PackedScene) -> void:
@@ -67,11 +69,10 @@ func _physics_process(delta: float) -> void:
 		if collider == null or collider.is_queued_for_deletion():
 			continue
 			
-		var death_screen = get_node("/root/Game/DeathScreen")
 		
 		if collider.is_in_group("GameWall"):
 			print("Hit a wall named: ", collider.name)
-			death_screen.visible = true
+			take_damage(40)
 			# gets rid of player
 			# queue_free()
 			return
