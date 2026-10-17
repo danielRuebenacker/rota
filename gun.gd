@@ -1,15 +1,22 @@
 extends Item
 
+const BULLET_SCENE := preload("res://scenes/bullet.tscn")
+@export var fire_cooldown := 0.25
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var _can_fire := true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-	
 func use() -> void:
-	print("used gun")
+	if not _can_fire:
+		return
+	_can_fire = false
+
+	var bullet := BULLET_SCENE.instantiate()
+	get_tree().current_scene.add_child(bullet)
+
+	var muzzle := get_node_or_null("Muzzle") as Marker2D
+	bullet.global_position = muzzle.global_position if muzzle else global_position
+	bullet.direction = global_transform.x.normalized()
+	bullet.rotation = global_rotation
+
+	await get_tree().create_timer(fire_cooldown).timeout
+	_can_fire = true

@@ -6,6 +6,11 @@ const SPEED = 300.0
 
 var current_weapon: Node2D
 
+func _ready() -> void:
+	add_to_group("Player")
+
+func get_player_direction() -> Vector2:
+	return Vector2.RIGHT.rotated(rotation)
 
 func equip_weapon(weapon_scene: PackedScene) -> void:
 	if current_weapon != null:
@@ -17,13 +22,13 @@ func equip_weapon(weapon_scene: PackedScene) -> void:
 
 func _physics_process(delta: float) -> void:
 		
-	if Input.is_action_pressed("use"):
+	if Input.is_action_pressed("use") and current_weapon != null:
 		current_weapon.use()
 		
 	if Input.is_action_pressed("ui_right"):
 		rotation += 5.0 * delta
 		
-	var forward_direction := Vector2.RIGHT.rotated(rotation)
+	var forward_direction := get_player_direction()
 	velocity = forward_direction * SPEED
 
 
@@ -42,10 +47,10 @@ func _physics_process(delta: float) -> void:
 		if collider.is_in_group("GameWall"):
 			print("Hit a wall named: ", collider.name)
 			# gets rid of player
-			#queue_free()
+			# queue_free()
 			return
 		elif collider.is_in_group("Loot"):
 			print("Hit loot named: ", collider.name)
 			# gets rid of loot
-			#collider.queue_free()
+			collider.queue_free()
 			# queue free breaks references to player -- make death different
