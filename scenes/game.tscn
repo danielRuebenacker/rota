@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://gkdlnyag5fbn"]
+
+[ext_resource type="PackedScene" uid="uid://rqpwshaswxw0" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://bx76amhouoxtk" path="res://scenes/wall.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Node2D" unique_id=950759391]
+
+[node name="Player" parent="." unique_id=2086208819 instance=ExtResource("1_uwrxv")]
+position = Vector2(260, 156)
+
+[node name="Wall" parent="." unique_id=277838667 instance=ExtResource("2_yqjtg")]
+position = Vector2(134, 343)
+
+[node name="Wall2" parent="." unique_id=288081448 instance=ExtResource("2_yqjtg")]
+position = Vector2(482, 337)
+
+[node name="Wall3" parent="." unique_id=410143679 instance=ExtResource("2_yqjtg")]
+position = Vector2(529, 138)
