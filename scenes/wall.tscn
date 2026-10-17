@@ -2,7 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dix0myh32ajm8" path="res://icon.svg" id="1_wykyb"]
 
-[node name="Wall" type="StaticBody2D" unique_id=277838667]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wykyb"]
+
+[node name="Wall" type="StaticBody2D" unique_id=277838667 groups=["GameWall"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=785076628]
 texture = ExtResource("1_wykyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2050631209]
+shape = SubResource("RectangleShape2D_wykyb")
