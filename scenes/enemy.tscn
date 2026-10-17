@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cgfn6v4t0okww"]
 
 [ext_resource type="Script" uid="uid://cuc5m3f3yimfw" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="PackedScene" uid="uid://b6mlpo4p1h78w" path="res://scenes/enemy_health_bar.tscn" id="2_health"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 
@@ -10,4 +11,6 @@ script = ExtResource("1_7p1mj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=913929342]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("2_health")]

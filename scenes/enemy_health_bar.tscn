@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b6mlpo4p1h78w"]
+
+[ext_resource type="Script" uid="uid://cwxyjrxd8k21b" path="res://scripts/enemy_health_bar.gd" id="1_la8mi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_background"]
+bg_color = Color(0.08, 0.05, 0.06, 0.9)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
+bg_color = Color(0.92, 0.16, 0.2, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="ProgressBar" type="ProgressBar" unique_id=2094031132]
+custom_minimum_size = Vector2(56, 7)
+offset_right = 56.0
+offset_bottom = 7.0
+mouse_filter = 2
+show_percentage = false
+theme_override_styles/background = SubResource("StyleBoxFlat_background")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
+script = ExtResource("1_la8mi")
