@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgoxvaf17opt2"]
 
-[ext_resource type="Texture2D" uid="uid://bjisbba8ljkp1" path="res://sprites/enemy.svg" id="2_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://cfusn33pkjkpn" path="res://sprites/zomb.png" id="1_httt1"]
 [ext_resource type="PackedScene" uid="uid://b6mlpo4p1h78w" path="res://scenes/enemy_health_bar.tscn" id="3_health"]
 
 [sub_resource type="GDScript" id="GDScript_1vlb3"]
@@ -37,21 +37,24 @@ func _physics_process(_delta: float) -> void:
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gx57"]
-radius = 5.8333335
+radius = 4.5123286
 
 [node name="Zombie" type="CharacterBody2D" unique_id=1932964476 groups=["Zombie-temp"]]
+position = Vector2(-1, 0)
 script = SubResource("GDScript_1vlb3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51808735]
+position = Vector2(3, 0)
 scale = Vector2(6, 6)
 shape = SubResource("CircleShape2D_4gx57")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1328765886]
 position = Vector2(-5.9999995, 0)
 scale = Vector2(1.8310546, 1.3593751)
-texture = ExtResource("2_4ra3w")
+texture = ExtResource("1_httt1")
 
 [node name="WeaponHolder" type="Node2D" parent="." unique_id=1348353308]
 position = Vector2(-1, 2)
 
 [node name="EnemyHealthBar" parent="." unique_id=2038542101 instance=ExtResource("3_health")]
+metadata/_edit_use_anchors_ = true
