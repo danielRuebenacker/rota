@@ -1,6 +1,7 @@
 extends Area2D
 
 const SPEED := 600.0
+const DAMAGE := 10
 
 var direction := Vector2.RIGHT
 
@@ -11,11 +12,12 @@ func _physics_process(delta: float) -> void:
 	global_position += direction * SPEED * delta
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("Player"):
+	# The bullet spawns inside the player, so ignore it
+	if body is Player:
 		return
-	if body.is_in_group("Enemy"):
-		body.queue_free()  # or call body.take_damage() if you have one
-	if body.is_in_group("Wall"):
-		print("Hit Wall")
-	# Hit an enemy or wall: the bullet is spent
+
+	if body is Enemy:
+		body.take_damage(DAMAGE)
+
+	# Hit an enemy or a wall: the bullet is spent
 	queue_free()

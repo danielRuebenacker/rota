@@ -1,45 +1,13 @@
 [gd_scene format=3 uid="uid://cgfn6v4t0okww"]
 
-[ext_resource type="Texture2D" uid="uid://dix0myh32ajm8" path="res://icon.svg" id="2_4ra3w"]
+[ext_resource type="Script" uid="uid://cuc5m3f3yimfw" path="res://scripts/enemy.gd" id="1_7p1mj"]
 
-[sub_resource type="GDScript" id="GDScript_1vlb3"]
-script/source = "extends CharacterBody2D
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 
-const SPEED = 150.0
+[node name="Enemy" type="CharacterBody2D" unique_id=962360191]
+script = ExtResource("1_7p1mj")
 
-@onready var weapon_holder: Node2D = $WeaponHolder
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1")
 
-var current_weapon: Node2D
-
-
-func equip_weapon(weapon_scene: PackedScene) -> void:
-	if current_weapon != null:
-		current_weapon.queue_free()
-
-	current_weapon = weapon_scene.instantiate() as Node2D
-	weapon_holder.add_child(current_weapon)
-	current_weapon.position = Vector2.ZERO
-
-func _physics_process(delta: float) -> void:	
-	# chase the player
-	var player := get_tree().current_scene.find_child(\"Player\", true, false) as Node2D
-	if player != null:
-		rotation = (player.global_position - global_position).angle()
-	
-	var forward_direction := Vector2.RIGHT.rotated(rotation)
-	velocity = forward_direction * SPEED
-
-
-	move_and_slide()
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7736"]
-
-[node name="Zombie" type="CharacterBody2D" unique_id=1932964476]
-script = SubResource("GDScript_1vlb3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51808735]
-shape = SubResource("RectangleShape2D_b7736")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1328765886]
-texture = ExtResource("2_4ra3w")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=913929342]
