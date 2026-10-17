@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://bx76amhouoxtk"]
 
-[ext_resource type="Texture2D" uid="uid://dix0myh32ajm8" path="res://icon.svg" id="1_wykyb"]
+[ext_resource type="Texture2D" uid="uid://clca2d3qnn8ne" path="res://sprites/red.png" id="1_wykyb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wykyb"]
 
 [node name="Wall" type="StaticBody2D" unique_id=277838667 groups=["GameWall"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=785076628]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_wykyb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2050631209]
+scale = Vector2(6.4, 6.4)
 shape = SubResource("RectangleShape2D_wykyb")
