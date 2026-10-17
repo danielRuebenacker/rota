@@ -8,7 +8,7 @@ extends Node
 @export var minimum_interval := 0.6
 @export var interval_decrease := 0.08
 @export var level_interval := 30.0
-@export_range(1, 500, 1) var max_enemies := 80
+const MAX_ENEMIES := 40
 @export var spawn_margin := 100.0
 @export var player_safe_radius := 500.0
 
@@ -28,14 +28,14 @@ func _process(delta: float) -> void:
 	var interval: float = maxf(minimum_interval, starting_interval - elapsed_time * interval_decrease)
 	while spawn_accumulator >= interval:
 		spawn_accumulator -= interval
-		if _active_enemy_count() < max_enemies:
+		if _active_enemy_count() < MAX_ENEMIES:
 			_spawn_enemy()
 
 func _active_enemy_count() -> int:
 	return get_tree().get_nodes_in_group("Enemy").size()
 
 func _spawn_enemy() -> void:
-	if enemy_scene == null or _active_enemy_count() >= max_enemies:
+	if enemy_scene == null or _active_enemy_count() >= MAX_ENEMIES:
 		return
 
 	var spawn_position: Variant = _get_spawn_position()
