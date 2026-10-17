@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dqc1cnxl81cst" path="res://scenes/loot.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://coom5xx1uw1t0" path="res://scenes/item_wheel.tscn" id="4_wheel"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wykyb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n5v38"]
+
 [node name="Game" type="Node2D" unique_id=950759391]
 script = ExtResource("1_lbhrr")
 
@@ -28,22 +32,31 @@ script = ExtResource("2_gee14")
 position = Vector2(-17, 170)
 
 [node name="loot2" parent="." unique_id=98362323 instance=ExtResource("3_lnu2h")]
-position = Vector2(1115, 258)
+position = Vector2(165, -62)
 
 [node name="Player" parent="." unique_id=2086208819 instance=ExtResource("1_uwrxv")]
 position = Vector2(430, 162)
 
 [node name="Wall" parent="." unique_id=277838667 instance=ExtResource("2_yqjtg")]
-position = Vector2(134, 343)
+position = Vector2(2000, 0)
+scale = Vector2(1, 32)
+physics_material_override = SubResource("PhysicsMaterial_wykyb")
 
 [node name="Wall2" parent="." unique_id=288081448 instance=ExtResource("2_yqjtg")]
-position = Vector2(482, 337)
+position = Vector2(-2000, 0)
+scale = Vector2(1, 32)
 
 [node name="Wall3" parent="." unique_id=410143679 instance=ExtResource("2_yqjtg")]
-position = Vector2(680, -83)
+position = Vector2(0, -2000)
+scale = Vector2(32, 1)
+
+[node name="Wall4" parent="." unique_id=755195734 instance=ExtResource("2_yqjtg")]
+position = Vector2(0, 2000)
+scale = Vector2(32, 1)
+physics_material_override = SubResource("PhysicsMaterial_n5v38")
 
 [node name="loot" parent="." unique_id=1631086911 instance=ExtResource("3_lnu2h")]
-position = Vector2(61, 92)
+position = Vector2(670, -74)
 
 [node name="ItemWheel" parent="." unique_id=1991812822 instance=ExtResource("4_wheel")]
 position = Vector2(312, 112)
