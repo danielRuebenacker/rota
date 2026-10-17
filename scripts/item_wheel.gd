@@ -24,7 +24,7 @@ func has_items() -> bool:
 	return not item_list.is_empty()
 
 func generate_circle() -> void:
-	if vertices < 3:
+	if vertices < 2:
 		polygon = PackedVector2Array()
 		return
 
