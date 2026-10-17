@@ -8,16 +8,13 @@ script/source = "extends Enemy
 
 const SPEED := 140.0
 const CONTACT_DAMAGE := 7
-const CONTACT_DISTANCE := 42.0
+const CONTACT_DISTANCE := 30.0
 const CONTACT_COOLDOWN := 0.6
-const REBOUND_SPEED := 180.0
-const REBOUND_DECELERATION := 900.0
 
 @onready var weapon_holder: Node2D = $WeaponHolder
 
 @export var player: Player
 var contact_cooldown := 0.0
-var rebound_velocity := Vector2.ZERO
 
 func _ready() -> void:
 	super._ready()  # runs Enemy's _ready so health gets initialized
@@ -27,17 +24,12 @@ func _physics_process(_delta: float) -> void:
 	if is_instance_valid(player):
 		rotation = (player.global_position - global_position).angle()
 
-	rebound_velocity = rebound_velocity.move_toward(Vector2.ZERO, REBOUND_DECELERATION * _delta)
-	velocity = Vector2.RIGHT.rotated(rotation) * SPEED + rebound_velocity
+	velocity = Vector2.RIGHT.rotated(rotation) * SPEED
 	move_and_slide()
 	
 	contact_cooldown = max(contact_cooldown - _delta, 0.0)
 	if is_instance_valid(player) and contact_cooldown == 0.0:
 		if global_position.distance_to(player.global_position) <= CONTACT_DISTANCE:
-			var away_from_player := (global_position - player.global_position).normalized()
-			if away_from_player == Vector2.ZERO:
-				away_from_player = Vector2.LEFT.rotated(rotation)
-			rebound_velocity = away_from_player * REBOUND_SPEED
 			player.take_damage(CONTACT_DAMAGE)
 			contact_cooldown = CONTACT_COOLDOWN
 "
