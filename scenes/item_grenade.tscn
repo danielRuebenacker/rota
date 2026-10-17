@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c4grenadeitem"]
+
+[ext_resource type="Script" uid="uid://b8s8nfobwc0eq" path="res://scripts/grenade_weapon.gd" id="1_grenade"]
+[ext_resource type="Texture2D" uid="uid://cdagtsjw82pw8" path="res://sprites/grenade.svg" id="2_grenade"]
+
+[node name="Item_Grenade" type="Node2D" unique_id=1019384807]
+script = ExtResource("1_grenade")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1720579832]
+visible = false
+texture = ExtResource("2_grenade")
