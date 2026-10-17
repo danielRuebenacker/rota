@@ -47,5 +47,5 @@ func _physics_process(delta: float) -> void:
 		elif collider.is_in_group("Loot"):
 			print("Hit loot named: ", collider.name)
 			# gets rid of loot
-			#collider.queue_free()
+			collider.queue_free()
 			# queue free breaks references to player -- make death different
