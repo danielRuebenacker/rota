@@ -10,11 +10,10 @@ const SPEED := 150.0
 @onready var weapon_holder: Node2D = $WeaponHolder
 
 var current_weapon: Node2D
-var player: Node2D
+@export var player: Player
 
 func _ready() -> void:
 	super._ready()  # runs Enemy's _ready so health gets initialized
-	player = get_tree().current_scene.find_child(\"Player\", true, false) as Node2D
 
 func equip_weapon(weapon_scene: PackedScene) -> void:
 	if current_weapon != null:
