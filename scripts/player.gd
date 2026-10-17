@@ -80,5 +80,3 @@ func _physics_process(delta: float) -> void:
 			# gets rid of loot
 			collider.queue_free()
 			# queue free breaks references to player -- make death different
-		elif collider is Enemy:
-			take_damage(10)
