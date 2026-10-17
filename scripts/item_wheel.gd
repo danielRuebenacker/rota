@@ -70,11 +70,8 @@ func _draw() -> void:
 		var angle := TAU * item_index / item_list.size()
 		selected_position = Vector2(cos(angle), sin(angle)) * radius * item_inset
 
-	draw_arc(selected_position, 18.0, 0.0, TAU, 24, Color("#ffe066"), 3.0)
-	draw_line(selected_position + Vector2(-24, 0), selected_position + Vector2(-18, 0), Color("#ffe066"), 3.0)
-	draw_line(selected_position + Vector2(18, 0), selected_position + Vector2(24, 0), Color("#ffe066"), 3.0)
-	draw_line(selected_position + Vector2(0, -24), selected_position + Vector2(0, -18), Color("#ffe066"), 3.0)
-	draw_line(selected_position + Vector2(0, 18), selected_position + Vector2(0, 24), Color("#ffe066"), 3.0)
+	draw_circle(selected_position, 22.0, Color(1.0, 0.88, 0.4, 0.18))
+	draw_arc(selected_position, 22.0, 0.0, TAU, 32, Color("#ffe066"), 3.0)
 
 func pulse_rotation() -> void:
 	if item_list.size() < 2:
