@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c5grenadeloot"]
+
+[ext_resource type="Script" path="res://scripts/loot.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://c4grenadeitem" path="res://scenes/item_grenade.tscn" id="2_grenade"]
+[ext_resource type="Texture2D" path="res://sprites/grenade.svg" id="3_grenade"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_grenade"]
+radius = 18.0
+
+[node name="GrenadeLoot" type="StaticBody2D" groups=["Loot"]]
+script = ExtResource("1_script")
+pickup_scene = ExtResource("2_grenade")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_grenade")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_grenade")

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://coom5xx1uw1t0" path="res://scenes/item_wheel.tscn" id="4_wheel"]
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="6_spawner"]
 [ext_resource type="PackedScene" path="res://scenes/grenade_loot.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" path="res://scenes/grenade_loot.tscn" id="10_vtaks"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wykyb"]
 
@@ -72,6 +73,9 @@ position = Vector2(670, -74)
 script = ExtResource("6_spawner")
 enemy_scene = ExtResource("2_u5sy4")
 player_path = NodePath("../Player")
+
+[node name="GrenadeLoot" parent="." instance=ExtResource("10_vtaks")]
+position = Vector2(384, -34)
 
 [node name="GrenadeLoot" parent="." instance=ExtResource("10_vtaks")]
 position = Vector2(384, -34)
