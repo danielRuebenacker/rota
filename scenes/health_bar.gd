@@ -7,7 +7,7 @@ func _ready() -> void:
 	player.health_changed.connect(update)
 	update()
 
-func update():
+func update() -> void:
 	value = player.current_health * 100 / player.max_health
 
 

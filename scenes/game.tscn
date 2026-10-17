@@ -17,7 +17,7 @@ script = ExtResource("1_lbhrr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1379717001]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=111596942]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=111596942 node_paths=PackedStringArray("player")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -27,6 +27,7 @@ offset_right = -39.0
 offset_bottom = 86.0
 grow_horizontal = 0
 script = ExtResource("2_gee14")
+player = NodePath("../../Player")
 
 [node name="Zombie" parent="." unique_id=359590457 instance=ExtResource("2_u5sy4")]
 position = Vector2(-17, 170)

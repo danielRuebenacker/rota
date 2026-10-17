@@ -30,3 +30,4 @@ shape = SubResource("RectangleShape2D_n51c7")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1229408770]
 
 [node name="WeaponHolder" type="Node2D" parent="." unique_id=734316375]
+position = Vector2(3, 8)
