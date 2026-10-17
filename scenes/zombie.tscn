@@ -3,14 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://dix0myh32ajm8" path="res://icon.svg" id="2_4ra3w"]
 
 [sub_resource type="GDScript" id="GDScript_1vlb3"]
-script/source = "extends CharacterBody2D
+script/source = "extends Enemy
 
-const SPEED = 150.0
+const SPEED := 150.0
 
 @onready var weapon_holder: Node2D = $WeaponHolder
 
 var current_weapon: Node2D
+var player: Node2D
 
+func _ready() -> void:
+	super._ready()  # runs Enemy's _ready so health gets initialized
+	player = get_tree().current_scene.find_child(\"Player\", true, false) as Node2D
 
 func equip_weapon(weapon_scene: PackedScene) -> void:
 	if current_weapon != null:
@@ -20,22 +24,18 @@ func equip_weapon(weapon_scene: PackedScene) -> void:
 	weapon_holder.add_child(current_weapon)
 	current_weapon.position = Vector2.ZERO
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(_delta: float) -> void:
 	# chase the player
-	var player := get_tree().current_scene.find_child(\"Player\", true, false) as Node2D
-	if player != null:
+	if is_instance_valid(player):
 		rotation = (player.global_position - global_position).angle()
-	
-	var forward_direction := Vector2.RIGHT.rotated(rotation)
-	velocity = forward_direction * SPEED
 
-
+	velocity = Vector2.RIGHT.rotated(rotation) * SPEED
 	move_and_slide()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7736"]
 
-[node name="Zombie" type="CharacterBody2D" unique_id=1932964476]
+[node name="Zombie" type="CharacterBody2D" unique_id=1932964476 groups=["Zombie-temp"]]
 script = SubResource("GDScript_1vlb3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51808735]
@@ -44,3 +44,5 @@ shape = SubResource("RectangleShape2D_b7736")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1328765886]
 texture = ExtResource("2_4ra3w")
+
+[node name="WeaponHolder" type="Node2D" parent="."]

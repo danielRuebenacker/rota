@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 const SPEED = 300.0
@@ -41,8 +42,6 @@ func _physics_process(delta: float) -> void:
 		
 		if collider == null or collider.is_queued_for_deletion():
 			continue
-		
-		print("Hit: ", collider.name, " groups: ", collider.get_groups())
 		
 		if collider.is_in_group("GameWall"):
 			print("Hit a wall named: ", collider.name)
