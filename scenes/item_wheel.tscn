@@ -7,5 +7,5 @@
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=242244934]
 color = Color(0, 0.9128218, 0.69642687, 1)
 script = ExtResource("1_vuhp2")
-radius = 132.0
+radius = 82.0
 pulse_duration = 0.3
