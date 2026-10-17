@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c8b6w8v7n4m2p"]
+
+[ext_resource type="Script" path="res://scripts/loot.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://c7n8k7j7q2g5s" path="res://scenes/item_shotgun.tscn" id="2_shotgun"]
+[ext_resource type="Texture2D" path="res://sprites/shotgun.svg" id="3_shotgun"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shotgun"]
+size = Vector2(96, 48)
+
+[node name="ShotgunLoot" type="StaticBody2D" groups=["Loot"]]
+script = ExtResource("1_script")
+pickup_scene = ExtResource("2_shotgun")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_shotgun")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_shotgun")

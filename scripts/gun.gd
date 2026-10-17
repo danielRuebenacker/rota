@@ -1,7 +1,9 @@
+class_name Gun
 extends Item
 
 const BULLET_SCENE := preload("res://scenes/bullet.tscn")
 @export var fire_cooldown := 0.25
+@export var damage := 10
 
 var _can_fire := true
 
@@ -17,6 +19,7 @@ func use() -> void:
 	bullet.global_position = muzzle.global_position if muzzle else global_position
 	bullet.direction = global_transform.x.normalized()
 	bullet.rotation = global_rotation
+	bullet.damage = damage
 
 	await get_tree().create_timer(fire_cooldown).timeout
 	_can_fire = true
