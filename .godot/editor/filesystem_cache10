@@ -1,5 +1,5 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1792244272
+::res://::1792247131
 icon.svg::CompressedTexture2D::7769794115555275597::1792244252::1792244252::1::::<><><>0<>0<>d874ce1f96206b96f115f98b9e82b2be<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://addons/::1792244252
 ::res://addons/godot-git-plugin/::1792244252
@@ -8,9 +8,10 @@ THIRDPARTY.md::TextFile::-1::1792244252::0::1::::<><><>0<>0<><>::
 ::res://addons/godot-git-plugin/linux/::1792244252
 ::res://addons/godot-git-plugin/macos/::1792244252
 ::res://addons/godot-git-plugin/windows/::1792244252
-::res://scenes/::1792244252
-game.tscn::PackedScene::441979353968106131::1792244252::0::1::::<><><>0<>0<><>::uid://rqpwshaswxw0::::res://scenes/player.tscn<>uid://bx76amhouoxtk::::res://scenes/wall.tscn
-player.tscn::PackedScene::1227191384527791217::1792244252::0::1::::<><><>0<>0<><>::uid://dix0myh32ajm8::::res://icon.svg<>uid://doqwx5maiqxl8::::res://scripts/player.gd
-wall.tscn::PackedScene::4068707044030751900::1792244252::0::1::::<><><>0<>0<><>::uid://dix0myh32ajm8::::res://icon.svg
-::res://scripts/::1792244252
-player.gd::GDScript::8176314347426891635::1792244252::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://scenes/::1792247131
+game.tscn::PackedScene::441979353968106131::1792247054::0::1::::<><><>0<>0<><>::uid://rqpwshaswxw0::::res://scenes/player.tscn<>uid://bx76amhouoxtk::::res://scenes/wall.tscn
+player.tscn::PackedScene::1227191384527791217::1792245717::0::1::::<><><>0<>0<><>::uid://dix0myh32ajm8::::res://icon.svg<>uid://doqwx5maiqxl8::::res://scripts/player.gd
+loot.tscn::PackedScene::8287995237074645759::1792247054::0::1::::<><><>0<>0<><>::
+wall.tscn::PackedScene::4068707044030751900::1792245934::0::1::::<><><>0<>0<><>::uid://dix0myh32ajm8::::res://icon.svg
+::res://scripts/::1792246860
+player.gd::GDScript::8176314347426891635::1792246860::0::1::::<>CharacterBody2D<><>0<>0<><>::
