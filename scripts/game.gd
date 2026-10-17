@@ -4,7 +4,7 @@ signal change_item_pulse
 
 @export var pulse_interval: float = 2.0
 
-@onready var wheel = $ItemWheel/Polygon2D
+@onready var wheel = $CanvasLayer/ItemWheel/Polygon2D
 @onready var player = $Player
 @onready var timer: Timer = $ItemTimer
 
@@ -17,12 +17,13 @@ func _ready() -> void:
 	timer.timeout.connect(func(): change_item_pulse.emit())
 	timer.start()
 
+func collect_weapon(weapon_scene: PackedScene) -> void:
+	wheel.add_item(weapon_scene)
 	update_player_weapon()
-
 
 func update_player_weapon() -> void:
 	var item_scene = wheel.get_current_item()
 
-	if item_scene != null and player != null:
+	if item_scene != null and player != null and wheel.has_items():
 		player.equip_weapon(item_scene)
 		

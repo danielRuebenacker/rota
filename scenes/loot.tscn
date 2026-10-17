@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://bkeav6vral48j"]
 
-[ext_resource type="Texture2D" uid="uid://dix0myh32ajm8" path="res://icon.svg" id="1_xofgn"]
+[ext_resource type="Script" path="res://scripts/loot.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://c38dmrhc53ski" path="res://scenes/item_gun.tscn" id="2_gun"]
+[ext_resource type="Texture2D" path="res://sprites/gun.svg" id="1_xofgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5os5r"]
 
 [node name="loot" type="StaticBody2D" unique_id=98362323 groups=["Loot"]]
+script = ExtResource("1_script")
+pickup_scene = ExtResource("2_gun")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2012209574]
 texture = ExtResource("1_xofgn")

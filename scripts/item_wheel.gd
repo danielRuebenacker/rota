@@ -3,44 +3,48 @@ extends Polygon2D
 @export var radius: float = 50.0
 @export var pulse_duration: float = 0.1
 
-var vertices: int = 8
+var vertices: int = 0
 var item_index: int = 0
+const DISPLAY_VERTICES := 8
 
-var item_list: Array[PackedScene] = [
-	preload("res://scenes/item_gun.tscn"),
-	preload("res://scenes/item_gun.tscn"),
-	preload("res://scenes/item_gun.tscn"),
-	preload("res://scenes/item_gun.tscn"),
-	preload("res://scenes/item_gun.tscn"),
-	preload("res://scenes/item_gun.tscn"),
-	preload("res://scenes/item_gun.tscn"),
-	preload("res://scenes/item_gun.tscn")
-]
-
+var item_list: Array[PackedScene] = []
 
 func _ready() -> void:
+	generate_circle()
+	draw_items()
+	visible = false
+
+func add_item(item_scene: PackedScene) -> void:
+	if item_scene == null:
+		return
+	item_list.append(item_scene)
+	item_index = item_list.size() - 1
 	vertices = item_list.size()
 	generate_circle()
 	draw_items()
+	visible = true
+	queue_redraw()
 
+func has_items() -> bool:
+	return not item_list.is_empty()
 
 func generate_circle() -> void:
-	if vertices < 3:
-		return
-
 	var points := PackedVector2Array()
 
-	for i in range(vertices):
-		var angle := TAU * i / vertices
+	for i in range(DISPLAY_VERTICES):
+		var angle := TAU * i / DISPLAY_VERTICES
 		points.append(Vector2(cos(angle), sin(angle)) * radius)
 
 	polygon = points
 
 
-@export var item_scale: float = 0.3
+@export var item_scale: float = 0.2
 @export var item_inset: float = 0.75
 
 func draw_items() -> void:
+	for child in get_children():
+		child.queue_free()
+
 	for i in range(item_list.size()):
 		var item_scene := item_list[i].instantiate()
 		var original_sprite := item_scene.get_node("Sprite2D") as Sprite2D
@@ -48,26 +52,45 @@ func draw_items() -> void:
 		var sprite := Sprite2D.new()
 		sprite.texture = original_sprite.texture
 		sprite.scale = Vector2.ONE * item_scale
-		sprite.position = polygon[i] * item_inset
+		if item_list.size() == 1:
+			sprite.position = Vector2.ZERO
+		else:
+			var angle := TAU * i / item_list.size()
+			sprite.position = Vector2(cos(angle), sin(angle)) * radius * item_inset
 
 		add_child(sprite)
 		item_scene.free()
 
+func _draw() -> void:
+	if item_list.is_empty():
+		return
+
+	var selected_position := Vector2.ZERO
+	if item_list.size() > 1:
+		var angle := TAU * item_index / item_list.size()
+		selected_position = Vector2(cos(angle), sin(angle)) * radius * item_inset
+
+	draw_arc(selected_position, 18.0, 0.0, TAU, 24, Color("#ffe066"), 3.0)
+	draw_line(selected_position + Vector2(-24, 0), selected_position + Vector2(-18, 0), Color("#ffe066"), 3.0)
+	draw_line(selected_position + Vector2(18, 0), selected_position + Vector2(24, 0), Color("#ffe066"), 3.0)
+	draw_line(selected_position + Vector2(0, -24), selected_position + Vector2(0, -18), Color("#ffe066"), 3.0)
+	draw_line(selected_position + Vector2(0, 18), selected_position + Vector2(0, 24), Color("#ffe066"), 3.0)
 
 func pulse_rotation() -> void:
-	if vertices < 3:
+	if item_list.size() < 2:
 		return
 
 	item_index += 1
-	if item_index >= vertices:
+	if item_index >= item_list.size():
 		item_index = 0
+	queue_redraw()
 
 	var tween := create_tween()
 
 	tween.tween_property(
 		self,
 		"rotation_degrees",
-		rotation_degrees + 360.0 / vertices,
+		rotation_degrees + 360.0 / item_list.size(),
 		pulse_duration
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	

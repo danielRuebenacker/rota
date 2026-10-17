@@ -29,6 +29,9 @@ grow_horizontal = 0
 script = ExtResource("2_gee14")
 player = NodePath("../../Player")
 
+[node name="ItemWheel" parent="CanvasLayer" unique_id=1991812822 instance=ExtResource("4_wheel")]
+position = Vector2(160, 155)
+
 [node name="Zombie" parent="." unique_id=359590457 node_paths=PackedStringArray("player") instance=ExtResource("2_u5sy4")]
 position = Vector2(-17, 170)
 player = NodePath("../Player")
@@ -59,9 +62,6 @@ physics_material_override = SubResource("PhysicsMaterial_n5v38")
 
 [node name="loot" parent="." unique_id=1631086911 instance=ExtResource("3_lnu2h")]
 position = Vector2(670, -74)
-
-[node name="ItemWheel" parent="." unique_id=1991812822 instance=ExtResource("4_wheel")]
-position = Vector2(312, 112)
 
 [node name="ItemTimer" type="Timer" parent="." unique_id=1047130262]
 
