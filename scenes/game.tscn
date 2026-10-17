@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkeav6vral48j" path="res://scenes/loot.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://c8b6w8v7n4m2p" path="res://scenes/shotgun_loot.tscn" id="5_shotgun"]
 [ext_resource type="PackedScene" uid="uid://coom5xx1uw1t0" path="res://scenes/item_wheel.tscn" id="4_wheel"]
+[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="6_spawner"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wykyb"]
 
@@ -65,6 +66,11 @@ physics_material_override = SubResource("PhysicsMaterial_n5v38")
 position = Vector2(670, -74)
 
 [node name="ItemTimer" type="Timer" parent="." unique_id=1047130262]
+
+[node name="EnemySpawner" type="Node" parent="."]
+script = ExtResource("6_spawner")
+enemy_scene = ExtResource("2_u5sy4")
+player_path = NodePath("../Player")
 
 [node name="DeathScreen" type="CanvasLayer" parent="." unique_id=1379383586]
 visible = false

@@ -3,6 +3,7 @@ extends ProgressBar
 @export var offset := Vector2(-28, -42)
 
 var enemy: Enemy
+@onready var level_label: Label = $LevelLabel
 
 func _ready() -> void:
 	enemy = get_parent() as Enemy
@@ -13,6 +14,7 @@ func _ready() -> void:
 	top_level = true
 	max_value = enemy.max_health
 	value = enemy.health
+	level_label.text = "Lv.%d" % enemy.level
 	enemy.health_changed.connect(_on_health_changed)
 	_on_health_changed()
 
@@ -24,3 +26,4 @@ func _process(_delta: float) -> void:
 func _on_health_changed() -> void:
 	if is_instance_valid(enemy):
 		value = enemy.health
+		level_label.text = "Lv.%d" % enemy.level
