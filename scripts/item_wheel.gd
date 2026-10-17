@@ -12,6 +12,7 @@ var item_list: Array[PackedScene] = []
 func _ready() -> void:
 	generate_circle()
 	draw_items()
+	visible = false
 
 func add_item(item_scene: PackedScene) -> void:
 	if item_scene == null:
@@ -21,6 +22,8 @@ func add_item(item_scene: PackedScene) -> void:
 	vertices = item_list.size()
 	generate_circle()
 	draw_items()
+	visible = true
+	queue_redraw()
 
 func has_items() -> bool:
 	return not item_list.is_empty()
@@ -35,7 +38,7 @@ func generate_circle() -> void:
 	polygon = points
 
 
-@export var item_scale: float = 0.3
+@export var item_scale: float = 0.2
 @export var item_inset: float = 0.75
 
 func draw_items() -> void:
@@ -58,6 +61,21 @@ func draw_items() -> void:
 		add_child(sprite)
 		item_scene.free()
 
+func _draw() -> void:
+	if item_list.is_empty():
+		return
+
+	var selected_position := Vector2.ZERO
+	if item_list.size() > 1:
+		var angle := TAU * item_index / item_list.size()
+		selected_position = Vector2(cos(angle), sin(angle)) * radius * item_inset
+
+	draw_arc(selected_position, 18.0, 0.0, TAU, 24, Color("#ffe066"), 3.0)
+	draw_line(selected_position + Vector2(-24, 0), selected_position + Vector2(-18, 0), Color("#ffe066"), 3.0)
+	draw_line(selected_position + Vector2(18, 0), selected_position + Vector2(24, 0), Color("#ffe066"), 3.0)
+	draw_line(selected_position + Vector2(0, -24), selected_position + Vector2(0, -18), Color("#ffe066"), 3.0)
+	draw_line(selected_position + Vector2(0, 18), selected_position + Vector2(0, 24), Color("#ffe066"), 3.0)
+
 func pulse_rotation() -> void:
 	if item_list.size() < 2:
 		return
@@ -65,6 +83,7 @@ func pulse_rotation() -> void:
 	item_index += 1
 	if item_index >= item_list.size():
 		item_index = 0
+	queue_redraw()
 
 	var tween := create_tween()
 

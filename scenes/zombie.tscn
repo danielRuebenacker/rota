@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgoxvaf17opt2"]
 
-[ext_resource type="Texture2D" path="res://sprites/enemy.svg" id="2_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://bjisbba8ljkp1" path="res://sprites/enemy.svg" id="2_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://b6mlpo4p1h78w" path="res://scenes/enemy_health_bar.tscn" id="3_health"]
 
 [sub_resource type="GDScript" id="GDScript_1vlb3"]
@@ -36,18 +36,21 @@ func _physics_process(_delta: float) -> void:
 			collider.take_damage(CONTACT_DAMAGE)
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7736"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gx57"]
 
 [node name="Zombie" type="CharacterBody2D" unique_id=1932964476 groups=["Zombie-temp"]]
 script = SubResource("GDScript_1vlb3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51808735]
 scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_b7736")
+shape = SubResource("CircleShape2D_4gx57")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1328765886]
+position = Vector2(-0.9999962, 0)
+scale = Vector2(2.7871091, 2.3437502)
 texture = ExtResource("2_4ra3w")
 
 [node name="WeaponHolder" type="Node2D" parent="." unique_id=1348353308]
+position = Vector2(-1, 2)
 
-[node name="EnemyHealthBar" parent="." instance=ExtResource("3_health")]
+[node name="EnemyHealthBar" parent="." unique_id=2038542101 instance=ExtResource("3_health")]
