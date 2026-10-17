@@ -2,8 +2,23 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
+@onready var weapon_holder: Node2D = $WeaponHolder
+
+var current_weapon: Node2D
+
+
+func equip_weapon(weapon_scene: PackedScene) -> void:
+	if current_weapon != null:
+		current_weapon.queue_free()
+
+	current_weapon = weapon_scene.instantiate() as Node2D
+	weapon_holder.add_child(current_weapon)
+	current_weapon.position = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
+		
+	if Input.is_action_pressed("use"):
+		current_weapon.use()
 		
 	if Input.is_action_pressed("ui_right"):
 		rotation += 5.0 * delta
@@ -27,9 +42,10 @@ func _physics_process(delta: float) -> void:
 		if collider.is_in_group("GameWall"):
 			print("Hit a wall named: ", collider.name)
 			# gets rid of player
-			queue_free()
+			#queue_free()
 			return
 		elif collider.is_in_group("Loot"):
 			print("Hit loot named: ", collider.name)
 			# gets rid of loot
-			collider.queue_free()
+			#collider.queue_free()
+			# queue free breaks references to player -- make death different
