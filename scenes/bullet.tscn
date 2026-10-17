@@ -7,7 +7,6 @@ radius = 3.0
 
 [node name="Bullet" type="Area2D" unique_id=283327617 groups=["Bullet"]]
 collision_layer = 8
-collision_mask = 5
 script = ExtResource("1_hf8mt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=878116153]

@@ -8,13 +8,10 @@ script/source = "extends Enemy
 
 const SPEED := 140.0
 const CONTACT_DAMAGE := 7
-const CONTACT_DISTANCE := 30.0
-const CONTACT_COOLDOWN := 0.6
 
 @onready var weapon_holder: Node2D = $WeaponHolder
 
 @export var player: Player
-var contact_cooldown := 0.0
 
 func _ready() -> void:
 	super._ready()  # runs Enemy's _ready so health gets initialized
@@ -27,11 +24,16 @@ func _physics_process(_delta: float) -> void:
 	velocity = Vector2.RIGHT.rotated(rotation) * SPEED
 	move_and_slide()
 	
-	contact_cooldown = max(contact_cooldown - _delta, 0.0)
-	if is_instance_valid(player) and contact_cooldown == 0.0:
-		if global_position.distance_to(player.global_position) <= CONTACT_DISTANCE:
-			player.take_damage(CONTACT_DAMAGE)
-			contact_cooldown = CONTACT_COOLDOWN
+	# If we touch the player, damage them
+	for i in range(get_slide_collision_count()):
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+
+		if collider == null or collider.is_queued_for_deletion():
+			continue
+
+		if collider is Player:
+			collider.take_damage(CONTACT_DAMAGE)
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gx57"]
@@ -40,8 +42,6 @@ radius = 4.5123286
 [node name="Zombie" type="CharacterBody2D" unique_id=1932964476 groups=["Zombie-temp"]]
 position = Vector2(-1, 0)
 collision_layer = 4
-collision_mask = 1
-max_health = 180
 script = SubResource("GDScript_1vlb3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51808735]
