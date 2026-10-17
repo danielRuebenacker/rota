@@ -8,7 +8,7 @@ extends Node
 @export var minimum_interval := 0.6
 @export var interval_decrease := 0.08
 @export var level_interval := 30.0
-@export var max_enemies := 80
+@export_range(1, 500, 1) var max_enemies := 80
 @export var spawn_margin := 100.0
 @export var player_safe_radius := 500.0
 
@@ -35,7 +35,7 @@ func _active_enemy_count() -> int:
 	return get_tree().get_nodes_in_group("Enemy").size()
 
 func _spawn_enemy() -> void:
-	if enemy_scene == null:
+	if enemy_scene == null or _active_enemy_count() >= max_enemies:
 		return
 
 	var spawn_position: Variant = _get_spawn_position()
