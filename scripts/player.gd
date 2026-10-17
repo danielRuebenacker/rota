@@ -18,7 +18,12 @@ func _physics_process(delta: float) -> void:
 	for i in range(get_slide_collision_count()):
 		var collision := get_slide_collision(i)
 		var collider := collision.get_collider()
+		
+		if collider == null or collider.is_queued_for_deletion():
+			continue
+		
 		print("Hit: ", collider.name, " groups: ", collider.get_groups())
+		
 		if collider.is_in_group("GameWall"):
 			print("Hit a wall named: ", collider.name)
 			# gets rid of player
