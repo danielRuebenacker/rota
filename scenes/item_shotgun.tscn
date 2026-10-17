@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://c7n8k7j7q2g5s"]
 
-[ext_resource type="Script" path="res://scripts/shotgun.gd" id="1_shotgun"]
-[ext_resource type="Texture2D" path="res://sprites/shotgun.svg" id="2_shotgun"]
+[ext_resource type="Script" uid="uid://wnx5jawdlktd" path="res://scripts/shotgun.gd" id="1_shotgun"]
+[ext_resource type="Texture2D" uid="uid://bv3w611x7lfcj" path="res://sprites/shotgun.svg" id="2_shotgun"]
 
-[node name="Item_Shotgun" type="Node2D"]
+[node name="Item_Shotgun" type="Node2D" unique_id=330133875]
 script = ExtResource("1_shotgun")
 fire_cooldown = 1.2
-damage = 35
+damage = 20
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=149897837]
 texture = ExtResource("2_shotgun")
 
-[node name="Muzzle" type="Marker2D" parent="."]
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1158842918]
 position = Vector2(58, 0)

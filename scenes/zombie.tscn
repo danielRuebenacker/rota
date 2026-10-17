@@ -37,6 +37,7 @@ func _physics_process(_delta: float) -> void:
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gx57"]
+radius = 5.8333335
 
 [node name="Zombie" type="CharacterBody2D" unique_id=1932964476 groups=["Zombie-temp"]]
 script = SubResource("GDScript_1vlb3")
@@ -46,8 +47,8 @@ scale = Vector2(6, 6)
 shape = SubResource("CircleShape2D_4gx57")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1328765886]
-position = Vector2(-0.9999962, 0)
-scale = Vector2(2.7871091, 2.3437502)
+position = Vector2(-5.9999995, 0)
+scale = Vector2(1.8310546, 1.3593751)
 texture = ExtResource("2_4ra3w")
 
 [node name="WeaponHolder" type="Node2D" parent="." unique_id=1348353308]

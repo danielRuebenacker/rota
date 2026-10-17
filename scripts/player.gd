@@ -4,6 +4,7 @@ extends CharacterBody2D
 signal health_changed
 
 const SPEED = 300.0
+const TURN_SPEED = 7.0
 
 @export var max_health = 200
 @onready var current_health: int = max_health 
@@ -52,7 +53,7 @@ func _physics_process(delta: float) -> void:
 		current_weapon.use()
 		
 	if Input.is_action_pressed("ui_right"):
-		rotation += 5.0 * delta
+		rotation += TURN_SPEED * delta
 		
 	var forward_direction := get_player_direction()
 	velocity = forward_direction * SPEED

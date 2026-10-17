@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://4nbg57ax7xgj" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://rqpwshaswxw0" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="Script" uid="uid://dthpsxq705y4m" path="res://scenes/health_bar.gd" id="2_gee14"]
+[ext_resource type="Script" uid="uid://dthpsxq705y4m" path="res://scripts/health_bar.gd" id="2_gee14"]
 [ext_resource type="PackedScene" uid="uid://dgoxvaf17opt2" path="res://scenes/zombie.tscn" id="2_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://bx76amhouoxtk" path="res://scenes/wall.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://bkeav6vral48j" path="res://scenes/loot.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://c8b6w8v7n4m2p" path="res://scenes/shotgun_loot.tscn" id="5_shotgun"]
+[ext_resource type="PackedScene" uid="uid://dqc1cnxl81cst" path="res://scenes/loot.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://coom5xx1uw1t0" path="res://scenes/item_wheel.tscn" id="4_wheel"]
-[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="6_spawner"]
+[ext_resource type="PackedScene" uid="uid://c8b6w8v7n4m2p" path="res://scenes/shotgun_loot.tscn" id="5_shotgun"]
+[ext_resource type="Script" uid="uid://da6v32n35hant" path="res://scripts/enemy_spawner.gd" id="6_spawner"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wykyb"]
 
@@ -62,12 +62,18 @@ position = Vector2(0, 2000)
 scale = Vector2(32, 1)
 physics_material_override = SubResource("PhysicsMaterial_n5v38")
 
-[node name="ShotgunLoot" parent="." instance=ExtResource("5_shotgun")]
+[node name="ShotgunLoot" parent="." unique_id=1172912485 instance=ExtResource("5_shotgun")]
 position = Vector2(670, -74)
+
+[node name="ShotgunLoot2" parent="." unique_id=392931518 instance=ExtResource("5_shotgun")]
+position = Vector2(735, 92)
+
+[node name="ShotgunLoot3" parent="." unique_id=899190481 instance=ExtResource("5_shotgun")]
+position = Vector2(394, -66)
 
 [node name="ItemTimer" type="Timer" parent="." unique_id=1047130262]
 
-[node name="EnemySpawner" type="Node" parent="."]
+[node name="EnemySpawner" type="Node" parent="." unique_id=1581725621]
 script = ExtResource("6_spawner")
 enemy_scene = ExtResource("2_u5sy4")
 player_path = NodePath("../Player")
