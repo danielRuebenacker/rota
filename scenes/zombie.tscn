@@ -6,23 +6,14 @@
 script/source = "extends Enemy
 
 const SPEED := 150.0
+const CONTACT_DAMAGE := 10
 
 @onready var weapon_holder: Node2D = $WeaponHolder
 
-var current_weapon: Node2D
-var player: Node2D
+@export var player: Player
 
 func _ready() -> void:
 	super._ready()  # runs Enemy's _ready so health gets initialized
-	player = get_tree().current_scene.find_child(\"Player\", true, false) as Node2D
-
-func equip_weapon(weapon_scene: PackedScene) -> void:
-	if current_weapon != null:
-		current_weapon.queue_free()
-
-	current_weapon = weapon_scene.instantiate() as Node2D
-	weapon_holder.add_child(current_weapon)
-	current_weapon.position = Vector2.ZERO
 
 func _physics_process(_delta: float) -> void:
 	# chase the player
@@ -31,6 +22,17 @@ func _physics_process(_delta: float) -> void:
 
 	velocity = Vector2.RIGHT.rotated(rotation) * SPEED
 	move_and_slide()
+	
+	# If we touch the player, damage them
+	for i in range(get_slide_collision_count()):
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+
+		if collider == null or collider.is_queued_for_deletion():
+			continue
+
+		if collider is Player:
+			collider.take_damage(CONTACT_DAMAGE)
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7736"]
