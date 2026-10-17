@@ -12,10 +12,6 @@ func _physics_process(delta: float) -> void:
 	global_position += direction * SPEED * delta
 
 func _on_body_entered(body: Node) -> void:
-	# The bullet spawns inside the player, so ignore it
-	if body is Player:
-		return
-
 	if body is Enemy:
 		body.take_damage(DAMAGE)
 
