@@ -21,6 +21,10 @@ func _physics_process(delta: float) -> void:
 		print("Hit: ", collider.name, " groups: ", collider.get_groups())
 		if collider.is_in_group("GameWall"):
 			print("Hit a wall named: ", collider.name)
-			# kills the player
+			# gets rid of player
 			queue_free()
 			return
+		elif collider.is_in_group("Loot"):
+			print("Hit loot named: ", collider.name)
+			# gets rid of loot
+			collider.queue_free()
