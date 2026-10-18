@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 signal health_changed
 
-@export var max_health := 200
+@export var max_health := 160
 @export var knockback_strength := 200.0
 
 var health: int
@@ -91,6 +91,9 @@ func take_damage(damage: int, source_position: Vector2 = Vector2.INF) -> void:
 
 
 func die() -> void:
+	var game := get_tree().current_scene
+	if game != null and game.has_method("spawn_enemy_drop"):
+		game.spawn_enemy_drop(global_position)
 	queue_free()
 	
 	
