@@ -66,10 +66,6 @@ player = NodePath("../../Player")
 [node name="ItemWheel" parent="CanvasLayer" unique_id=1991812822 instance=ExtResource("4_wheel")]
 position = Vector2(160, 155)
 
-[node name="Zombie" parent="." unique_id=359590457 instance=ExtResource("2_u5sy4")]
-position = Vector2(-17, 170)
-collision_layer = 1
-
 [node name="loot2" parent="." unique_id=98362323 instance=ExtResource("3_lnu2h")]
 position = Vector2(165, -62)
 

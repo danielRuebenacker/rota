@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bcvsxg5omm688"]
+
+[node name="WaveCompleteMenu" type="CanvasLayer" unique_id=1295755091]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1491376047]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011953325, 0.15549073, 0, 0.78431374)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=326904531]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2056519772]
+layout_mode = 2
+
+[node name="WaveLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1599745999]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.61960787)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 60
+text = "wave complete"
+horizontal_alignment = 1
+
+[node name="UnlockedItemLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=892557346]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.61960787)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 60
+text = "wave complete"
+horizontal_alignment = 1
+
+[node name="UnlockedDescriptionLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1278995975]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.61960787)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 60
+text = "wave complete"
+horizontal_alignment = 1
+
+[node name="SlotsLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1703841450]
+layout_mode = 2
+
+[node name="WheelSlots" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=2008274070]
+layout_mode = 2
+
+[node name="ItemsLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=27140703]
+layout_mode = 2
+
+[node name="AvailableItems" type="GridContainer" parent="PanelContainer/VBoxContainer" unique_id=1724595972]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1470227618]
+layout_mode = 2

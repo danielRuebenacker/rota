@@ -106,3 +106,8 @@ func _process(_delta: float) -> void:
 	for child in get_children():
 		if child is Sprite2D:
 			child.rotation = -rotation
+			
+			
+func refresh_items() -> void:
+	# Rebuild your wheel's item icons from item_list
+	pass

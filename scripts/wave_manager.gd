@@ -5,7 +5,7 @@ signal wave_started(wave: int)
 signal wave_completed(wave: int)
 
 @export var enemy_spawner: EnemySpawner
-@export var starting_enemy_count: int = 8
+@export var starting_enemy_count: int = 1
 @export var enemies_added_per_wave: int = 4
 
 var current_wave := 0
@@ -54,6 +54,7 @@ func complete_wave() -> void:
 
 	var new_item := unlock_random_item()
 	wave_completed.emit(current_wave)
+	start_next_wave()
 
 
 func unlock_random_item() -> PackedScene:
