@@ -53,6 +53,10 @@ sources/0 = SubResource("TileSetAtlasSource_dinhu")
 
 [node name="Game" type="Node2D" unique_id=950759391]
 script = ExtResource("1_lbhrr")
+helicopter_drop_scene = ExtResource("14_helicopter")
+machine_gun_drop_scene = ExtResource("13_37s47")
+shotgun_drop_scene = ExtResource("5_shotgun")
+potion_drop_scene = ExtResource("12_potion")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1379717001]
 
