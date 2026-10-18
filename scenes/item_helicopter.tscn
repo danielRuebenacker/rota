@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b5y4q3xina6fb" path="res://sprites/heli.png" id="2_h2i3d"]
 
 [node name="Item_Helicopter" type="Node2D" unique_id=280529164]
+scale = Vector2(3, 3)
 script = ExtResource("1_helicopter")
+cooldown = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1589759957]
 texture = ExtResource("2_h2i3d")
