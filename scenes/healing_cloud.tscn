@@ -18,7 +18,7 @@ curve = SubResource("Curve_healing")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_healing"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(18, 28, 0)
+emission_box_extents = Vector3(8, 12, 0)
 scale_min = 0.35
 scale_max = 0.65
 alpha_curve = SubResource("CurveTexture_healing")
