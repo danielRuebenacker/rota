@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b6mlpo4p1h78w" path="res://scenes/enemy_health_bar.tscn" id="3_health"]
 
 [sub_resource type="GDScript" id="GDScript_1vlb3"]
-script/source = "extends Enemy
+script/source = "
+extends Enemy
 
 const SPEED := 140.0
 const CONTACT_DAMAGE := 7
@@ -13,25 +14,18 @@ const CONTACT_DAMAGE := 7
 
 @export var player: Player
 
-
 func _ready() -> void:
-	super._ready()
+	super._ready()  # runs Enemy's _ready so health gets initialized
 
-
-func update_behaviour(_delta: float) -> void:
-	# Chase the player
+func _physics_process(_delta: float) -> void:
+	# chase the player
 	if is_instance_valid(player):
-		rotation = (
-			player.global_position - global_position
-		).angle()
+		rotation = (player.global_position - global_position).angle()
 
-		velocity = Vector2.RIGHT.rotated(rotation) * SPEED
-	else:
-		velocity = Vector2.ZERO
-
-
-func check_collisions() -> void:
-	# Damage player on collision
+	velocity = Vector2.RIGHT.rotated(rotation) * SPEED
+	move_and_slide()
+	
+	# If we touch the player, damage them
 	for i in range(get_slide_collision_count()):
 		var collision := get_slide_collision(i)
 		var collider := collision.get_collider()

@@ -19,8 +19,14 @@ var current_weapon: Node2D
 var is_boosting := false
 var boost_direction := Vector2.ZERO
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 var trail_timer := 0.0
+
+var damage_tween: Tween
+
+@onready var camera: Camera2D = $Camera2D
+@export var shake_strength: float = 8.0
+@export var shake_duration: float = 0.2
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -37,6 +43,9 @@ func take_damage(amount: int) -> void:
 	_can_be_hit = false
 	current_health = max(current_health - amount, 0)
 	health_changed.emit()
+	
+	damage_effect()
+	
 	if current_health <= 0:
 		die()
 		return
@@ -138,3 +147,37 @@ func spawn_boost_trail() -> void:
 	var tween := ghost.create_tween()
 	tween.tween_property(ghost, "modulate:a", 0.0, 0.3)
 	tween.tween_callback(ghost.queue_free)
+
+
+func damage_effect() -> void:
+	shake_camera()
+	if damage_tween and damage_tween.is_running():
+		damage_tween.kill()
+
+	sprite.modulate = Color.RED
+
+	damage_tween = create_tween()
+	damage_tween.tween_property(
+		sprite,
+		"modulate",
+		Color.WHITE,
+		0.3
+	)
+	
+	
+	
+func shake_camera() -> void:
+	var tween := create_tween()
+
+	for i in range(6):
+		tween.tween_property(
+			camera,
+			"offset",
+			Vector2(
+				randf_range(-shake_strength, shake_strength),
+				randf_range(-shake_strength, shake_strength)
+			),
+			shake_duration / 6.0
+		)
+
+	tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)
