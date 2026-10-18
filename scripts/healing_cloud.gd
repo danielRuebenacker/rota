@@ -8,6 +8,7 @@ var elapsed := 0.0
 var heal_timer := 0.0
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var particles: GPUParticles2D = $GPUParticles2D
 
 
 func _ready() -> void:
@@ -46,6 +47,7 @@ func _physics_process(delta: float) -> void:
 
 
 func animate_cloud() -> void:
+	particles.emitting = true
 	var tween := create_tween()
 	tween.set_loops()
 
