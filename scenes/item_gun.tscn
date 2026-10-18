@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c38dmrhc53ski"]
 
-[ext_resource type="Script" uid="uid://b03n4acqkvq3t" path="res://scripts/rifle.gd" id="1_l2nem"]
+[ext_resource type="Script" uid="uid://dbnxg8qjfxk0m" path="res://scripts/machine_gun.gd" id="1_l2nem"]
 [ext_resource type="Texture2D" uid="uid://boursw04gdc36" path="res://sprites/gun.svg" id="2_l2nem"]
 
-[node name="Item_Gun" type="Node2D" unique_id=182698635]
+[node name="Item_Machine_Gun" type="Node2D" unique_id=182698635]
 script = ExtResource("1_l2nem")
 fire_cooldown = 0.5
 damage = 12

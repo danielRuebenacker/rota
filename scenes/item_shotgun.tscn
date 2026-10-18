@@ -5,8 +5,8 @@
 
 [node name="Item_Shotgun" type="Node2D" unique_id=330133875]
 script = ExtResource("1_shotgun")
-fire_cooldown = 1.2
-damage = 20
+fire_cooldown = 0.2
+damage = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=149897837]
 texture = ExtResource("2_shotgun")
