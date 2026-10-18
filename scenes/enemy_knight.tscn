@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c2pd7q3gd2o3q"]
+
+[ext_resource type="Script" uid="uid://c3lkx3svu5ks2" path="res://scripts/enemy_knight.gd" id="1_s5n55"]
+[ext_resource type="Texture2D" uid="uid://cqgosmt0r3f35" path="res://sprites/sGun.png" id="2_xyjps"]
+[ext_resource type="PackedScene" uid="uid://b6mlpo4p1h78w" path="res://scenes/enemy_health_bar.tscn" id="3_kinlx"]
+[ext_resource type="Texture2D" uid="uid://b1335vh4hmx15" path="res://sprites/sSword.png" id="4_wpci7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yy3v5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rflxr"]
+size = Vector2(15, 74)
+
+[node name="enemy_knight" type="CharacterBody2D" unique_id=674913037]
+collision_layer = 4
+script = ExtResource("1_s5n55")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1843094232]
+shape = SubResource("CircleShape2D_yy3v5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=583060293]
+texture = ExtResource("2_xyjps")
+
+[node name="EnemyHealthBar" parent="." unique_id=2094031132 instance=ExtResource("3_kinlx")]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=411071174]
+
+[node name="Sword" type="Node2D" parent="." unique_id=1124197361]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sword" unique_id=77323079]
+texture_filter = 1
+position = Vector2(12, -36)
+scale = Vector2(1.503125, 2.3371875)
+texture = ExtResource("4_wpci7")
+
+[node name="Hitbox" type="Area2D" parent="Sword" unique_id=1355676580]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/Hitbox" unique_id=833145551]
+position = Vector2(12.5, -38)
+shape = SubResource("RectangleShape2D_rflxr")

@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://da6v32n35hant" path="res://scripts/enemy_spawner.gd" id="6_spawner"]
 [ext_resource type="Texture2D" uid="uid://75e4hstpob3w" path="res://sprites/lava-fused.png" id="9_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://f7ojj7o8h3mi" path="res://sprites/ground.png" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://c2pd7q3gd2o3q" path="res://scenes/enemy_knight.tscn" id="12_ir15t"]
 [ext_resource type="PackedScene" uid="uid://c5jo4fw17ibvt" path="res://scenes/healing_potion.tscn" id="12_potion"]
 [ext_resource type="Script" uid="uid://duuuxke0025o3" path="res://scripts/potion_spawner.gd" id="13_potion_spawner"]
 [ext_resource type="PackedScene" uid="uid://dhfky8alg20ra" path="res://scenes/enemy_ranged.tscn" id="14_trtic"]
@@ -116,6 +117,7 @@ position = Vector2(394, -66)
 script = ExtResource("6_spawner")
 enemy_scene = ExtResource("2_u5sy4")
 ranged_enemy_scene = ExtResource("14_trtic")
+knight_enemy_scene = ExtResource("12_ir15t")
 player_path = NodePath("../Player")
 
 [node name="PotionSpawner" type="Node" parent="." unique_id=1020764636]

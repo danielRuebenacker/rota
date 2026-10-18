@@ -4,7 +4,8 @@ extends Node
 @export var enemy_scene: PackedScene
 @export var ranged_enemy_scene: PackedScene
 @export_range(0.0, 1.0) var ranged_spawn_chance := 0.2
-
+@export var knight_enemy_scene: PackedScene
+@export_range(0.0, 1.0) var knight_spawn_chance := 1.0
 @export var player_path: NodePath
 @export var bounds := Rect2(-1900, -1900, 3800, 3800)
 @export var starting_interval := 4.0
@@ -57,8 +58,11 @@ func _spawn_enemy() -> void:
 
 	# Choose which enemy to spawn
 	var selected_scene: PackedScene = enemy_scene
+	var roll := rng.randf()
 
-	if ranged_enemy_scene != null and rng.randf() < ranged_spawn_chance:
+	if knight_enemy_scene != null and roll < knight_spawn_chance:
+		selected_scene = knight_enemy_scene
+	elif ranged_enemy_scene != null and roll < knight_spawn_chance + ranged_spawn_chance:
 		selected_scene = ranged_enemy_scene
 
 	var enemy := selected_scene.instantiate() as Enemy
