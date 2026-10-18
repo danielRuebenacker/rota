@@ -7,7 +7,7 @@ extends Node
 @export var knight_enemy_scene: PackedScene
 @export_range(0.0, 1.0) var knight_spawn_chance := 0.025
 @export var tank_enemy_scene: PackedScene
-@export_range(0.0, 1.0) var tank_spawn_chance := 1.0
+@export_range(0.0, 1.0) var tank_spawn_chance := 0.1
 
 @export var player_path: NodePath
 @export var bounds := Rect2(-1900, -1900, 3800, 3800)
