@@ -52,6 +52,7 @@ sources/0 = SubResource("TileSetAtlasSource_dinhu")
 
 [node name="Game" type="Node2D" unique_id=950759391]
 script = ExtResource("1_lbhrr")
+enemy_drop_chance = 0.9
 helicopter_drop_scene = ExtResource("14_helicopter")
 machine_gun_drop_scene = ExtResource("13_37s47")
 shotgun_drop_scene = ExtResource("5_shotgun")
