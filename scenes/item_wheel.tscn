@@ -7,7 +7,7 @@
 texture_filter = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=242244934]
-color = Color(0, 0.9128218, 0.69642687, 1)
+color = Color(0.49019608, 0.21960784, 0.2, 1)
 script = ExtResource("1_vuhp2")
 radius = 82.0
 pulse_duration = 0.3

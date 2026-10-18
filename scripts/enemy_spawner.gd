@@ -27,12 +27,25 @@ var rng := RandomNumberGenerator.new()
 
 @onready var player: Node2D = get_node_or_null(player_path)
 
+var wave_active := false
+var wave_spawn_limit := 0
+var wave_spawned := 0
+
+func start_wave(enemy_count: int) -> void:
+	wave_spawn_limit = enemy_count
+	wave_spawned = 0
+	spawn_accumulator = 0.0
+	wave_active = true
+
 
 func _ready() -> void:
 	rng.randomize()
 
 
 func _process(delta: float) -> void:
+	if not wave_active:
+		return
+	
 	elapsed_time += delta
 	spawn_accumulator += delta
 
@@ -41,23 +54,27 @@ func _process(delta: float) -> void:
 		starting_interval - elapsed_time * interval_decrease
 	)
 
-	while spawn_accumulator >= interval:
+	while spawn_accumulator >= interval and wave_spawned < wave_spawn_limit:
 		spawn_accumulator -= interval
-		if _active_enemy_count() < MAX_ENEMIES:
-			_spawn_enemy()
+		if _active_enemy_count() >= MAX_ENEMIES:
+			break	
+		if _spawn_enemy():
+			wave_spawned += 1
+	if wave_spawned >= wave_spawn_limit:
+		wave_active = false
 
 
 func _active_enemy_count() -> int:
 	return get_tree().get_nodes_in_group("Enemy").size()
 
 
-func _spawn_enemy() -> void:
+func _spawn_enemy() -> bool:
 	if enemy_scene == null or _active_enemy_count() >= MAX_ENEMIES:
-		return
+		return false
 
 	var spawn_position: Variant = _get_spawn_position()
 	if spawn_position == null:
-		return
+		return false
 
 	# Choose which enemy to spawn
 	var selected_scene: PackedScene = enemy_scene
@@ -73,13 +90,14 @@ func _spawn_enemy() -> void:
 
 	if enemy == null:
 		push_warning("EnemySpawner scene must instantiate an Enemy")
-		return
+		return false
 
 	enemy.level = 1 + int(elapsed_time / level_interval)
 	enemy.position = spawn_position as Vector2
 	enemy.set("player", player)
 
 	get_parent().add_child(enemy)
+	return true
 
 
 func _get_spawn_position() -> Variant:

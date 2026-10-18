@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 signal health_changed
 
-const SPEED = 150.0
+const SPEED = 250.0
 const TURN_SPEED = 7.0
 
 @export var max_health = 200
