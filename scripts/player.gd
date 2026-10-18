@@ -23,7 +23,6 @@ var helicopter_time_left := 0.0
 var helicopter_direction := Vector2.ZERO
 const HELICOPTER_SPEED := SPEED * 3.0
 const HELICOPTER_DURATION := 2.0
-const HELICOPTER_RANDOM_ANGLE := PI / 4.0
 var random_source := RandomNumberGenerator.new()
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -134,6 +133,8 @@ func _physics_process(delta: float) -> void:
 			return
 		elif collider.is_in_group("Loot"):
 			print("Hit loot named: ", collider.name)
+			if collider.has_method("animate_pickup"):
+				collider.animate_pickup(self)
 			if collider.has_method("heal_player"):
 				collider.heal_player(self)
 			if collider.has_method("get_pickup_scene"):
@@ -160,13 +161,9 @@ func helicopter_lift() -> void:
 		return
 
 	is_helicoptering = true
-	helicopter_time_left = HELICOPTER_DURATION
-	var direction_to_center := -global_position
-	if direction_to_center.length_squared() == 0.0:
-		direction_to_center = Vector2.RIGHT
-	helicopter_direction = direction_to_center.normalized().rotated(
-		random_source.randf_range(-HELICOPTER_RANDOM_ANGLE, HELICOPTER_RANDOM_ANGLE)
-	)
+	var game := get_tree().current_scene
+	helicopter_time_left = game.pulse_interval if game != null else HELICOPTER_DURATION
+	helicopter_direction = Vector2.RIGHT.rotated(random_source.randf_range(0.0, TAU))
 
 
 func _draw() -> void:
