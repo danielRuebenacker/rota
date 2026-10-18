@@ -23,6 +23,8 @@ var helicopter_time_left := 0.0
 var helicopter_direction := Vector2.ZERO
 const HELICOPTER_SPEED := SPEED * 3.0
 const HELICOPTER_DURATION := 2.0
+const HELICOPTER_RANDOM_ANGLE := PI / 4.0
+var random_source := RandomNumberGenerator.new()
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 var trail_timer := 0.0
@@ -39,6 +41,7 @@ var damage_tween: Tween
 
 func _ready() -> void:
 	add_to_group("Player")
+	random_source.randomize()
 	health_changed.emit()
 	
 func get_player_direction() -> Vector2:
@@ -97,7 +100,7 @@ func _physics_process(delta: float) -> void:
 		velocity = boost_direction * boost_speed
 	elif is_helicoptering:
 		helicopter_time_left -= delta
-		velocity = get_player_direction() * HELICOPTER_SPEED
+		velocity = helicopter_direction * HELICOPTER_SPEED
 
 		# Rise quickly, hover, then come back down
 		var progress: float = 1.0 - max(helicopter_time_left, 0.0) / HELICOPTER_DURATION
@@ -158,8 +161,12 @@ func helicopter_lift() -> void:
 
 	is_helicoptering = true
 	helicopter_time_left = HELICOPTER_DURATION
-	
-	
+	var direction_to_center := -global_position
+	if direction_to_center.length_squared() == 0.0:
+		direction_to_center = Vector2.RIGHT
+	helicopter_direction = direction_to_center.normalized().rotated(
+		random_source.randf_range(-HELICOPTER_RANDOM_ANGLE, HELICOPTER_RANDOM_ANGLE)
+	)
 
 
 func _draw() -> void:
