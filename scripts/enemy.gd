@@ -92,3 +92,8 @@ func take_damage(damage: int, source_position: Vector2 = Vector2.INF) -> void:
 
 func die() -> void:
 	queue_free()
+	
+	
+func heal_percent(percent: float) -> void:
+	health = mini(health + int(max_health * percent), max_health)
+	health_changed.emit()

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cxvyfd1m1bk3c"]
+
+[ext_resource type="Script" uid="uid://df7rq6elg040c" path="res://scripts/item_harming_potion.gd" id="1_pjbkp"]
+[ext_resource type="PackedScene" uid="uid://bfhjp4nxr5t21" path="res://scenes/harming_cloud.tscn" id="2_dyexj"]
+[ext_resource type="Texture2D" uid="uid://inuuuesco5ly" path="res://sprites/sHarmingPotion.png" id="2_pjbkp"]
+
+[node name="item_harming_potion" type="Node2D" unique_id=1243019027]
+script = ExtResource("1_pjbkp")
+cloud_scene = ExtResource("2_dyexj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1617951692]
+texture_filter = 1
+texture = ExtResource("2_pjbkp")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=169054912]
+position = Vector2(58, 0)

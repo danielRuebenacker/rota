@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b27wic4qun40y"]
+
+[ext_resource type="Script" uid="uid://dxo6epmumqckl" path="res://scripts/healing_cloud.gd" id="1_qtihc"]
+[ext_resource type="Texture2D" uid="uid://de6vo1fors47j" path="res://sprites/sHealingCloud.png" id="1_tb7mf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n51c7"]
+radius = 31.0
+height = 126.0
+
+[node name="healing_cloud" type="Area2D" unique_id=1302972859]
+z_index = -1
+scale = Vector2(3, 3)
+collision_layer = 5
+script = ExtResource("1_qtihc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1205425178]
+texture_filter = 1
+texture = ExtResource("1_tb7mf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1595345606]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_n51c7")

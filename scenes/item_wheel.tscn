@@ -14,6 +14,6 @@ pulse_duration = 0.3
 
 [node name="CrossHair" type="Sprite2D" parent="." unique_id=334759081]
 texture_filter = 1
-position = Vector2(0, -55)
+position = Vector2(0, -65)
 scale = Vector2(2, 2)
 texture = ExtResource("2_1yhgo")

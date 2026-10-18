@@ -13,11 +13,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	print("Bullet hit: ", body.name)
-	print("Bullet collided with: ", body.name)
-	print("Is Enemy: ", body is Enemy)
-	print("Damage: ", damage)
 	if body is Enemy:
-		print("Enemy hit! Damage: ", damage)
+
 		body.take_damage(damage, global_position)
 
 	queue_free()

@@ -11,9 +11,12 @@ const DISPLAY_VERTICES := 8
 var item_list: Array[PackedScene] = []
 
 func _ready() -> void:
+	add_item(preload("res://scenes/item_healing_potion.tscn"))
+	add_item(preload("res://scenes/item_harming_potion.tscn"))
 	generate_circle()
 	draw_items()
 	visible = false
+	
 
 func add_item(item_scene: PackedScene) -> void:
 	if item_scene == null:
@@ -26,6 +29,7 @@ func add_item(item_scene: PackedScene) -> void:
 	visible = true
 	queue_redraw()
 	rotation_degrees = -90.0 - (360.0 * item_index / item_list.size())
+
 
 func has_items() -> bool:
 	return not item_list.is_empty()

@@ -16,7 +16,7 @@ var current_weapon: Node2D
 func _ready() -> void:
 	add_to_group("Player")
 	health_changed.emit()
-
+	
 func get_player_direction() -> Vector2:
 	return Vector2.RIGHT.rotated(rotation)
 	

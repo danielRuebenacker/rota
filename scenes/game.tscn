@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://f7ojj7o8h3mi" path="res://sprites/ground.png" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://c2pd7q3gd2o3q" path="res://scenes/enemy_knight.tscn" id="12_ir15t"]
 [ext_resource type="PackedScene" uid="uid://c5jo4fw17ibvt" path="res://scenes/healing_potion.tscn" id="12_potion"]
+[ext_resource type="PackedScene" uid="uid://kd5t4a1c6f5n" path="res://scenes/enemy_tank.tscn" id="13_ca42v"]
 [ext_resource type="Script" uid="uid://duuuxke0025o3" path="res://scripts/potion_spawner.gd" id="13_potion_spawner"]
 [ext_resource type="PackedScene" uid="uid://dhfky8alg20ra" path="res://scenes/enemy_ranged.tscn" id="14_trtic"]
 
@@ -118,6 +119,7 @@ script = ExtResource("6_spawner")
 enemy_scene = ExtResource("2_u5sy4")
 ranged_enemy_scene = ExtResource("14_trtic")
 knight_enemy_scene = ExtResource("12_ir15t")
+tank_enemy_scene = ExtResource("13_ca42v")
 player_path = NodePath("../Player")
 
 [node name="PotionSpawner" type="Node" parent="." unique_id=1020764636]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://kd5t4a1c6f5n"]
+
+[ext_resource type="Script" uid="uid://j4l4f7hnt2pa" path="res://scripts/enemy_tank.gd" id="1_tnyut"]
+[ext_resource type="Texture2D" uid="uid://b2d08qfq7dt4w" path="res://sprites/sEnemyRanged.png" id="2_30wi0"]
+[ext_resource type="PackedScene" uid="uid://b6mlpo4p1h78w" path="res://scenes/enemy_health_bar.tscn" id="3_mj5mm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdaou"]
+radius = 32.01562
+
+[node name="enemy_tank" type="CharacterBody2D" unique_id=915878943]
+collision_layer = 4
+script = ExtResource("1_tnyut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1415295460]
+shape = SubResource("CircleShape2D_cdaou")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2100984866]
+scale = Vector2(2, 2)
+texture = ExtResource("2_30wi0")
+
+[node name="EnemyHealthBar" parent="." unique_id=2094031132 instance=ExtResource("3_mj5mm")]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1375932761]

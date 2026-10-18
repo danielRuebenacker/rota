@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://de7y53diia8rw"]
+
+[ext_resource type="Script" uid="uid://cxmbbyf7yj4si" path="res://scripts/item_healing_potion.gd" id="1_jhceq"]
+[ext_resource type="Texture2D" uid="uid://cv14yc7kqnlko" path="res://sprites/sHealingPotion.png" id="1_me5lg"]
+[ext_resource type="PackedScene" uid="uid://b27wic4qun40y" path="res://scenes/healing_cloud.tscn" id="2_syayn"]
+
+[node name="item_healing_potion" type="Node2D" unique_id=1243019027]
+script = ExtResource("1_jhceq")
+cloud_scene = ExtResource("2_syayn")
+throw_distance = 300.0
+cooldown = 25.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1617951692]
+texture_filter = 1
+texture = ExtResource("1_me5lg")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=169054912]
+position = Vector2(58, 0)
