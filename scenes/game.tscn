@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkeav6vral48j" path="res://scenes/loot.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://bpi46ncnwk45n" path="res://scripts/wave_complete_menu.gd" id="4_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://coom5xx1uw1t0" path="res://scenes/item_wheel.tscn" id="4_wheel"]
+[ext_resource type="Script" uid="uid://bt13ld6k6elnr" path="res://scripts/wave_label.gd" id="5_264po"]
 [ext_resource type="PackedScene" uid="uid://c8b6w8v7n4m2p" path="res://scenes/shotgun_loot.tscn" id="5_shotgun"]
 [ext_resource type="Script" uid="uid://da6v32n35hant" path="res://scripts/enemy_spawner.gd" id="6_spawner"]
 [ext_resource type="Texture2D" uid="uid://75e4hstpob3w" path="res://sprites/lava-fused.png" id="9_kvpfn"]
@@ -69,6 +70,7 @@ position = Vector2(160, 155)
 
 [node name="WaveCompleteMenu" type="Control" parent="CanvasLayer" unique_id=1687967494 node_paths=PackedStringArray("wave_manager")]
 process_mode = 2
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,6 +108,27 @@ color = Color(0.07869121, 0.25741163, 0.12963668, 0.78431374)
 [node name="ContinueButton" type="Button" parent="CanvasLayer/WaveCompleteMenu/PanelContainer/VBoxContainer" unique_id=1688568238]
 layout_mode = 2
 text = "Continue"
+
+[node name="WaveLabel" type="Label" parent="CanvasLayer" unique_id=267898539 node_paths=PackedStringArray("wave_manager")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -148.0
+offset_right = 134.0
+offset_bottom = -65.0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.61960787)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 60
+text = "1"
+horizontal_alignment = 1
+script = ExtResource("5_264po")
+wave_manager = NodePath("../../WaveManager")
 
 [node name="loot2" parent="." unique_id=98362323 instance=ExtResource("3_lnu2h")]
 position = Vector2(165, -62)
