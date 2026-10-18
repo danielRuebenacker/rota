@@ -19,6 +19,8 @@ size = Vector2(35.5, 33.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=2086208819]
 script = ExtResource("1_g2els")
+boost_speed = 800.0
+boost_duration = 0.7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1518747249]
 sprite_frames = SubResource("SpriteFrames_rflxr")

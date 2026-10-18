@@ -13,6 +13,7 @@ var item_list: Array[PackedScene] = []
 func _ready() -> void:
 	add_item(preload("res://scenes/item_healing_potion.tscn"))
 	add_item(preload("res://scenes/item_harming_potion.tscn"))
+	add_item(preload("res://scenes/item_rocket.tscn"))
 	generate_circle()
 	draw_items()
 	visible = false

@@ -13,6 +13,15 @@ const TURN_SPEED = 7.0
 var is_dead: bool = false
 var current_weapon: Node2D
 
+@export var boost_speed: float = 600.0
+@export var boost_duration: float = 0.4
+
+var is_boosting := false
+var boost_direction := Vector2.ZERO
+
+@onready var sprite: Sprite2D = $Sprite2D
+var trail_timer := 0.0
+
 func _ready() -> void:
 	add_to_group("Player")
 	health_changed.emit()
@@ -66,8 +75,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_right"):
 		rotation += TURN_SPEED * delta
 		
-	var forward_direction := get_player_direction()
-	velocity = forward_direction * SPEED
+	if is_boosting:
+		velocity = boost_direction * boost_speed
+	else:
+		var forward_direction := get_player_direction()
+		velocity = forward_direction * SPEED
 
 
 	move_and_slide()
@@ -99,3 +111,30 @@ func _physics_process(delta: float) -> void:
 			# gets rid of loot
 			collider.queue_free()
 			# queue free breaks references to player -- make death different
+
+
+func boost() -> void:
+	if is_boosting or is_dead:
+		return
+
+	is_boosting = true
+	boost_direction = get_player_direction()
+
+	await get_tree().create_timer(boost_duration).timeout
+	is_boosting = false
+	
+	
+func spawn_boost_trail() -> void:
+	var ghost := Sprite2D.new()
+
+	ghost.texture = sprite.texture
+	ghost.global_rotation = sprite.global_rotation
+	ghost.scale = sprite.global_scale
+	ghost.modulate = Color(1.0, 0.5, 0.1, 0.5)
+
+	get_tree().current_scene.add_child(ghost)
+	ghost.global_position = sprite.global_position
+
+	var tween := ghost.create_tween()
+	tween.tween_property(ghost, "modulate:a", 0.0, 0.3)
+	tween.tween_callback(ghost.queue_free)

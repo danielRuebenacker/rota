@@ -22,6 +22,9 @@ func use() -> void:
 
 
 func throw_potion() -> void:
+	if cloud_scene == null:
+		return
+
 	var player := get_parent().get_parent() as Player
 
 	var direction := player.get_player_direction()
@@ -31,11 +34,15 @@ func throw_potion() -> void:
 	var potion := Sprite2D.new()
 	potion.texture = sprite.texture
 
-	get_tree().current_scene.add_child(potion)
+	var scene := get_tree().current_scene
+	scene.add_child(potion)
 	potion.global_position = global_position
 	potion.global_rotation = 0.0
 
-	var tween := create_tween()
+	# Store the cloud scene before the weapon is removed
+	var cloud_resource := cloud_scene
+
+	var tween := potion.create_tween()
 
 	tween.tween_property(
 		potion,
@@ -44,11 +51,11 @@ func throw_potion() -> void:
 		throw_duration
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-	await tween.finished
+	# create the cloud when the tween finishes
+	tween.tween_callback(func():
+		var cloud := cloud_resource.instantiate() as Area2D
+		scene.add_child(cloud)
+		cloud.global_position = target_position
 
-
-	var cloud := cloud_scene.instantiate() as Area2D
-	get_tree().current_scene.add_child(cloud)
-	cloud.global_position = target_position
-
-	potion.queue_free()
+		potion.queue_free()
+	)

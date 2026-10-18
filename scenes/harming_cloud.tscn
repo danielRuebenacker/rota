@@ -12,6 +12,7 @@ z_index = -1
 scale = Vector2(3, 3)
 collision_layer = 5
 script = ExtResource("1_y1a6f")
+damage_percent = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1205425178]
 texture_filter = 1
