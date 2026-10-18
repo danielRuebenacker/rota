@@ -22,7 +22,7 @@ var is_helicoptering := false
 var helicopter_time_left := 0.0
 var helicopter_direction := Vector2.ZERO
 const HELICOPTER_SPEED := SPEED * 3.0
-const HELICOPTER_DURATION := 2.0
+const HELICOPTER_DURATION := 0.6
 var random_source := RandomNumberGenerator.new()
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -161,8 +161,7 @@ func helicopter_lift() -> void:
 		return
 
 	is_helicoptering = true
-	var game := get_tree().current_scene
-	helicopter_time_left = game.pulse_interval if game != null else HELICOPTER_DURATION
+	helicopter_time_left = HELICOPTER_DURATION
 	helicopter_direction = Vector2.RIGHT.rotated(random_source.randf_range(0.0, TAU))
 
 
