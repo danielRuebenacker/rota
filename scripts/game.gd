@@ -25,6 +25,7 @@ func _ready() -> void:
 	timer.start()
 
 	wheel.add_item(preload("res://scenes/item_gun.tscn"))
+	wheel.add_item(preload("res://scenes/item_healing_potion.tscn"))
 	update_player_weapon()
 
 
