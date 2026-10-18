@@ -140,6 +140,12 @@ wave_manager = NodePath("../../WaveManager")
 [node name="Player" parent="." unique_id=2086208819 instance=ExtResource("1_uwrxv")]
 position = Vector2(430, 162)
 
+[node name="DemoHelicopterLoot" parent="." instance=ExtResource("14_helicopter")]
+position = Vector2(1500, 1500)
+
+[node name="DemoMachineGunLoot" parent="." instance=ExtResource("13_37s47")]
+position = Vector2(1700, 1500)
+
 [node name="Wall" parent="." unique_id=277838667 instance=ExtResource("2_yqjtg")]
 z_index = -3
 position = Vector2(2000, 0)
