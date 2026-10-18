@@ -24,7 +24,7 @@ func _ready() -> void:
 	timer.timeout.connect(func(): change_item_pulse.emit())
 	timer.start()
 
-	wheel.add_item(preload("res://scenes/item_gun.tscn"))
+	wheel.add_item(preload("res://scenes/item_shotgun.tscn"))
 	wheel.add_item(preload("res://scenes/item_harming_potion.tscn"))
 	update_player_weapon()
 

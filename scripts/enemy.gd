@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 signal health_changed
 
-@export var max_health := 200
+@export var max_health := 160
 @export var knockback_strength := 200.0
 
 var health: int
