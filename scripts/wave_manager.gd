@@ -7,7 +7,7 @@ signal wave_completed(wave: int)
 @export var enemy_spawner: EnemySpawner
 @export var wave_complete_menu: Control
 
-@export var starting_enemy_count: int = 1
+@export var starting_enemy_count: int = 5
 @export var enemies_added_per_wave: int = 4
 
 var current_wave := 0
