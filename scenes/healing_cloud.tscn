@@ -8,15 +8,18 @@
 radius = 31.0
 height = 126.0
 
+[sub_resource type="Curve" id="Curve_healing"]
+_data = [Vector2(0, 0), 0.0, 2.0, 0, 0, Vector2(0.2, 1), 1.8, 0.0, 0, 0, Vector2(0.75, 1), 0.0, -1.8, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_healing"]
+curve = SubResource("Curve_healing")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_healing"]
 particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-spread = 180.0
-initial_velocity_min = 35.0
-initial_velocity_max = 75.0
-gravity = Vector3(0, 20, 0)
-scale_min = 0.7
-scale_max = 1.2
+scale_min = 0.35
+scale_max = 0.65
+alpha_curve = SubResource("CurveTexture_healing")
 
 [node name="healing_cloud" type="Area2D" unique_id=1302972859]
 z_index = -1
@@ -35,9 +38,9 @@ shape = SubResource("CapsuleShape2D_n51c7")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=223496241]
 z_index = 1
-scale = Vector2(20, 20)
-emitting = true
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_healing")
-lifetime = 1.4
+scale = Vector2(8, 8)
+amount = 10
+amount_ratio = 0.514
 texture = ExtResource("3_jef56")
+lifetime = 2.4
+process_material = SubResource("ParticleProcessMaterial_healing")
