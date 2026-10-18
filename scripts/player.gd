@@ -18,6 +18,11 @@ var current_weapon: Node2D
 
 var is_boosting := false
 var boost_direction := Vector2.ZERO
+var is_helicoptering := false
+var helicopter_time_left := 0.0
+var helicopter_direction := Vector2.ZERO
+const HELICOPTER_DURATION := 0.7
+const HELICOPTER_SPEED := 430.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 var trail_timer := 0.0
@@ -90,6 +95,14 @@ func _physics_process(delta: float) -> void:
 		
 	if is_boosting:
 		velocity = boost_direction * boost_speed
+	elif is_helicoptering:
+		helicopter_time_left -= delta
+		velocity = helicopter_direction * HELICOPTER_SPEED
+		var progress: float = 1.0 - max(helicopter_time_left, 0.0) / HELICOPTER_DURATION
+		sprite.position.y = -24.0 * sin(progress * PI)
+		if helicopter_time_left <= 0.0:
+			is_helicoptering = false
+			sprite.position.y = 0.0
 	else:
 		var forward_direction := get_player_direction()
 		velocity = forward_direction * SPEED
@@ -134,6 +147,14 @@ func boost() -> void:
 	boost_direction = get_player_direction()
 	await get_tree().create_timer(boost_duration).timeout
 	is_boosting = false
+
+func helicopter_lift() -> void:
+	if is_dead or is_boosting or is_helicoptering:
+		return
+
+	is_helicoptering = true
+	helicopter_time_left = HELICOPTER_DURATION
+	helicopter_direction = get_player_direction()
 	
 	
 

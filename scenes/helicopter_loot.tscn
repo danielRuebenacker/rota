@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/loot.gd" id="1_loot"]
+[ext_resource type="PackedScene" path="res://scenes/item_helicopter.tscn" id="2_helicopter"]
+[ext_resource type="Texture2D" path="res://sprites/helicopter.svg" id="3_helicopter"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_helicopter"]
+size = Vector2(72, 48)
+
+[node name="HelicopterLoot" type="StaticBody2D" groups=["Loot"]]
+script = ExtResource("1_loot")
+pickup_scene = ExtResource("2_helicopter")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_helicopter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_helicopter")

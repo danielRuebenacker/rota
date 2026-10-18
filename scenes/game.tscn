@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c5jo4fw17ibvt" path="res://scenes/healing_potion.tscn" id="12_potion"]
 [ext_resource type="PackedScene" uid="uid://kd5t4a1c6f5n" path="res://scenes/enemy_tank.tscn" id="13_ca42v"]
 [ext_resource type="Script" uid="uid://duuuxke0025o3" path="res://scripts/potion_spawner.gd" id="13_potion_spawner"]
+[ext_resource type="PackedScene" path="res://scenes/helicopter_loot.tscn" id="14_helicopter"]
 [ext_resource type="PackedScene" uid="uid://dhfky8alg20ra" path="res://scenes/enemy_ranged.tscn" id="14_trtic"]
 [ext_resource type="Script" uid="uid://lccjjuo1g6r8" path="res://scripts/wave_manager.gd" id="17_rysoc"]
 
@@ -163,6 +164,9 @@ position = Vector2(670, -74)
 
 [node name="ShotgunLoot2" parent="." unique_id=392931518 instance=ExtResource("5_shotgun")]
 position = Vector2(735, 92)
+
+[node name="HelicopterLoot" parent="." instance=ExtResource("14_helicopter")]
+position = Vector2(820, 0)
 
 [node name="LavaLayer" type="TileMapLayer" parent="." unique_id=1072809224]
 z_index = -2

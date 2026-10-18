@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/item_helicopter.gd" id="1_helicopter"]
+[ext_resource type="Texture2D" path="res://sprites/helicopter.svg" id="2_helicopter"]
+
+[node name="Item_Helicopter" type="Node2D"]
+script = ExtResource("1_helicopter")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_helicopter")
