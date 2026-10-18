@@ -10,7 +10,7 @@ const TURN_SPEED = 7.0
 @onready var current_health: float = max_health
 
 @onready var weapon_holder: Node2D = $WeaponHolder
-
+var is_dead: bool = false
 var current_weapon: Node2D
 
 func _ready() -> void:
@@ -40,6 +40,12 @@ func heal_percent(percent: float) -> void:
 		
 # player killed
 func die() -> void:
+	if is_dead:
+		return
+
+	is_dead = true
+	velocity = Vector2.ZERO
+
 	var death_screen = get_node("/root/Game/DeathScreen")
 	death_screen.visible = true
 

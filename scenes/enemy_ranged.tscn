@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dhfky8alg20ra"]
+
+[ext_resource type="Script" uid="uid://dttkhe0m2kc2e" path="res://scripts/enemy_ranged.gd" id="1_4lffy"]
+[ext_resource type="PackedScene" uid="uid://dlk7gltfjdsig" path="res://scenes/enemy_projectile.tscn" id="2_24171"]
+[ext_resource type="PackedScene" uid="uid://b6mlpo4p1h78w" path="res://scenes/enemy_health_bar.tscn" id="2_dyyx0"]
+[ext_resource type="Texture2D" uid="uid://b2d08qfq7dt4w" path="res://sprites/sEnemyRanged.png" id="2_wotfd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+
+[node name="enemy_ranged" type="CharacterBody2D" unique_id=1956128556]
+collision_layer = 4
+script = ExtResource("1_4lffy")
+projectile_scene = ExtResource("2_24171")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=431065348]
+shape = SubResource("CircleShape2D_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1212888769]
+texture = ExtResource("2_wotfd")
+
+[node name="EnemyHealthBar" parent="." unique_id=2094031132 instance=ExtResource("2_dyyx0")]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=73200881]

@@ -13,18 +13,25 @@ const CONTACT_DAMAGE := 7
 
 @export var player: Player
 
+
 func _ready() -> void:
-	super._ready()  # runs Enemy's _ready so health gets initialized
+	super._ready()
 
-func _physics_process(_delta: float) -> void:
-	# chase the player
+
+func update_behaviour(_delta: float) -> void:
+	# Chase the player
 	if is_instance_valid(player):
-		rotation = (player.global_position - global_position).angle()
+		rotation = (
+			player.global_position - global_position
+		).angle()
 
-	velocity = Vector2.RIGHT.rotated(rotation) * SPEED
-	move_and_slide()
-	
-	# If we touch the player, damage them
+		velocity = Vector2.RIGHT.rotated(rotation) * SPEED
+	else:
+		velocity = Vector2.ZERO
+
+
+func check_collisions() -> void:
+	# Damage player on collision
 	for i in range(get_slide_collision_count()):
 		var collision := get_slide_collision(i)
 		var collider := collision.get_collider()
@@ -50,6 +57,7 @@ scale = Vector2(6, 6)
 shape = SubResource("CircleShape2D_4gx57")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1328765886]
+texture_filter = 1
 position = Vector2(-5.9999995, 0)
 scale = Vector2(1.8310546, 1.3593751)
 texture = ExtResource("1_httt1")

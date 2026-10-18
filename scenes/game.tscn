@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://f7ojj7o8h3mi" path="res://sprites/ground.png" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://c5jo4fw17ibvt" path="res://scenes/healing_potion.tscn" id="12_potion"]
 [ext_resource type="Script" uid="uid://duuuxke0025o3" path="res://scripts/potion_spawner.gd" id="13_potion_spawner"]
+[ext_resource type="PackedScene" uid="uid://dhfky8alg20ra" path="res://scenes/enemy_ranged.tscn" id="14_trtic"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wykyb"]
 
@@ -62,10 +63,9 @@ player = NodePath("../../Player")
 [node name="ItemWheel" parent="CanvasLayer" unique_id=1991812822 instance=ExtResource("4_wheel")]
 position = Vector2(160, 155)
 
-[node name="Zombie" parent="." unique_id=359590457 node_paths=PackedStringArray("player") instance=ExtResource("2_u5sy4")]
+[node name="Zombie" parent="." unique_id=359590457 instance=ExtResource("2_u5sy4")]
 position = Vector2(-17, 170)
 collision_layer = 1
-player = NodePath("../Player")
 
 [node name="loot2" parent="." unique_id=98362323 instance=ExtResource("3_lnu2h")]
 position = Vector2(165, -62)
@@ -115,6 +115,7 @@ position = Vector2(394, -66)
 [node name="EnemySpawner" type="Node" parent="." unique_id=1581725621]
 script = ExtResource("6_spawner")
 enemy_scene = ExtResource("2_u5sy4")
+ranged_enemy_scene = ExtResource("14_trtic")
 player_path = NodePath("../Player")
 
 [node name="PotionSpawner" type="Node" parent="." unique_id=1020764636]
