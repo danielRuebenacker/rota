@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bkrg7p3k1vr4n"]
+
+[ext_resource type="Script" uid="uid://b03n4acqkvq3t" path="res://scripts/rifle.gd" id="1_mkw14"]
+[ext_resource type="Texture2D" uid="uid://byhb6bypg25sq" path="res://sprites/rifle.svg" id="2_mkw14"]
+
+[node name="Item_Gun" type="Node2D" unique_id=182698635]
+script = ExtResource("1_mkw14")
+fire_cooldown = 0.2
+damage = 30
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=505437515]
+texture_filter = 2
+texture = ExtResource("2_mkw14")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=458612540]
+position = Vector2(60, 0)

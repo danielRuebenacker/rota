@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ccnnb45hr6jmh"]
+
+[ext_resource type="Script" uid="uid://bfnvu0ewg5efg" path="res://scripts/loot.gd" id="1_4uyhd"]
+[ext_resource type="PackedScene" uid="uid://bkrg7p3k1vr4n" path="res://scenes/item_rifle.tscn" id="2_4uyhd"]
+[ext_resource type="Texture2D" uid="uid://byhb6bypg25sq" path="res://sprites/rifle.svg" id="3_4uyhd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shotgun"]
+size = Vector2(96, 48)
+
+[node name="ShotgunLoot" type="StaticBody2D" unique_id=1370320300 groups=["Loot"]]
+script = ExtResource("1_4uyhd")
+pickup_scene = ExtResource("2_4uyhd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=491400650]
+texture = ExtResource("3_4uyhd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=542062724]
+shape = SubResource("RectangleShape2D_shotgun")
