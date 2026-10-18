@@ -1,18 +1,19 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ctgaeoyl4uarc"]
 
-[ext_resource type="Script" path="res://scripts/loot.gd" id="1_loot"]
-[ext_resource type="PackedScene" path="res://scenes/item_helicopter.tscn" id="2_helicopter"]
-[ext_resource type="Texture2D" path="res://sprites/helicopter.svg" id="3_helicopter"]
+[ext_resource type="Script" uid="uid://bfnvu0ewg5efg" path="res://scripts/loot.gd" id="1_loot"]
+[ext_resource type="PackedScene" uid="uid://eq8wrqlgayoa" path="res://scenes/item_helicopter.tscn" id="2_helicopter"]
+[ext_resource type="Texture2D" uid="uid://b5y4q3xina6fb" path="res://sprites/heli.png" id="3_n5git"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_helicopter"]
 size = Vector2(72, 48)
 
-[node name="HelicopterLoot" type="StaticBody2D" groups=["Loot"]]
+[node name="HelicopterLoot" type="StaticBody2D" unique_id=164093352 groups=["Loot"]]
 script = ExtResource("1_loot")
 pickup_scene = ExtResource("2_helicopter")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_helicopter")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=361075460]
+scale = Vector2(3, 3)
+texture = ExtResource("3_n5git")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=496902745]
 shape = SubResource("RectangleShape2D_helicopter")

@@ -21,8 +21,8 @@ var boost_direction := Vector2.ZERO
 var is_helicoptering := false
 var helicopter_time_left := 0.0
 var helicopter_direction := Vector2.ZERO
-const HELICOPTER_DURATION := 0.7
-const HELICOPTER_SPEED := 430.0
+const HELICOPTER_SPEED := SPEED * 3.0
+const HELICOPTER_DURATION := 2.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 var trail_timer := 0.0
@@ -97,9 +97,13 @@ func _physics_process(delta: float) -> void:
 		velocity = boost_direction * boost_speed
 	elif is_helicoptering:
 		helicopter_time_left -= delta
-		velocity = helicopter_direction * HELICOPTER_SPEED
+		velocity = get_player_direction() * HELICOPTER_SPEED
+
+		# Rise quickly, hover, then come back down
 		var progress: float = 1.0 - max(helicopter_time_left, 0.0) / HELICOPTER_DURATION
-		sprite.position.y = -24.0 * sin(progress * PI)
+		var lift: float = clamp(min(progress, 1.0 - progress) * 5.0, 0.0, 1.0)
+		sprite.position.y = -24.0 * lift
+
 		if helicopter_time_left <= 0.0:
 			is_helicoptering = false
 			sprite.position.y = 0.0
@@ -154,7 +158,6 @@ func helicopter_lift() -> void:
 
 	is_helicoptering = true
 	helicopter_time_left = HELICOPTER_DURATION
-	helicopter_direction = get_player_direction()
 	
 	
 

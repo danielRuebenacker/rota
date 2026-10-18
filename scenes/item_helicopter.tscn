@@ -1,10 +1,10 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://eq8wrqlgayoa"]
 
-[ext_resource type="Script" path="res://scripts/item_helicopter.gd" id="1_helicopter"]
-[ext_resource type="Texture2D" path="res://sprites/helicopter.svg" id="2_helicopter"]
+[ext_resource type="Script" uid="uid://bkdi2wo71ew31" path="res://scripts/item_helicopter.gd" id="1_helicopter"]
+[ext_resource type="Texture2D" uid="uid://b5y4q3xina6fb" path="res://sprites/heli.png" id="2_h2i3d"]
 
-[node name="Item_Helicopter" type="Node2D"]
+[node name="Item_Helicopter" type="Node2D" unique_id=280529164]
 script = ExtResource("1_helicopter")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_helicopter")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1589759957]
+texture = ExtResource("2_h2i3d")
