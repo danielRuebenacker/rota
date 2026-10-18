@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://duuuxke0025o3" path="res://scripts/potion_spawner.gd" id="13_potion_spawner"]
 [ext_resource type="PackedScene" uid="uid://dhfky8alg20ra" path="res://scenes/enemy_ranged.tscn" id="14_trtic"]
 [ext_resource type="Script" uid="uid://lccjjuo1g6r8" path="res://scripts/wave_manager.gd" id="17_rysoc"]
+[ext_resource type="PackedScene" uid="uid://ccnnb45hr6jmh" path="res://scenes/rifle_loot.tscn" id="18_ssvqc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wykyb"]
 
@@ -172,6 +173,9 @@ tile_set = SubResource("TileSet_er28d")
 
 [node name="ShotgunLoot3" parent="." unique_id=899190481 instance=ExtResource("5_shotgun")]
 position = Vector2(394, -66)
+
+[node name="RifleLoot4" parent="." unique_id=1370320300 instance=ExtResource("18_ssvqc")]
+position = Vector2(300, 300)
 
 [node name="ItemTimer" type="Timer" parent="." unique_id=1047130262]
 
