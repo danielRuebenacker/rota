@@ -28,6 +28,10 @@ var damage_tween: Tween
 @export var shake_strength: float = 8.0
 @export var shake_duration: float = 0.2
 
+@export var arrow_distance: float = 40.0
+@export var arrow_length: float = 25.0
+@export var arrow_color: Color = Color.WHITE
+
 func _ready() -> void:
 	add_to_group("Player")
 	health_changed.emit()
@@ -79,7 +83,7 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("use") and current_weapon != null:
 		current_weapon.use()
-	rotation = (get_global_mouse_position() - global_position).angle()
+	#rotation = (get_global_mouse_position() - global_position).angle()
 	
 	if Input.is_action_pressed("ui_right"):
 		rotation += TURN_SPEED * delta
@@ -128,26 +132,24 @@ func boost() -> void:
 
 	is_boosting = true
 	boost_direction = get_player_direction()
-
 	await get_tree().create_timer(boost_duration).timeout
 	is_boosting = false
 	
 	
-func spawn_boost_trail() -> void:
-	var ghost := Sprite2D.new()
 
-	ghost.texture = sprite.texture
-	ghost.global_rotation = sprite.global_rotation
-	ghost.scale = sprite.global_scale
-	ghost.modulate = Color(1.0, 0.5, 0.1, 0.5)
 
-	get_tree().current_scene.add_child(ghost)
-	ghost.global_position = sprite.global_position
+func _draw() -> void:
+	var start := Vector2.RIGHT * arrow_distance
+	var end := start + Vector2.RIGHT * arrow_length
 
-	var tween := ghost.create_tween()
-	tween.tween_property(ghost, "modulate:a", 0.0, 0.3)
-	tween.tween_callback(ghost.queue_free)
+	
+	draw_line(start, end, arrow_color, 3.0)
 
+	var arrow_size := 8.0
+
+	draw_line(end,end + Vector2(-arrow_size, -arrow_size),arrow_color,3.0)
+
+	draw_line(end,end + Vector2(-arrow_size, arrow_size),arrow_color,3.0)
 
 func damage_effect() -> void:
 	shake_camera()
